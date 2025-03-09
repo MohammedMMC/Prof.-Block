@@ -1,0 +1,129 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdsv4c53vffia"]
+
+[ext_resource type="Script" uid="uid://b50w1yf37g72q" path="res://scripts/settings.gd" id="1_r6d6q"]
+[ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_x2hje"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nkug2"]
+texture = ExtResource("1_x2hje")
+modulate_color = Color(0.266575, 0.266575, 0.266575, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ykye"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gc0em"]
+bg_color = Color(0, 0, 0, 0.470588)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.19383, 0.415405, 0.296733, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(9.62615e-07, 0.435949, 0.247959, 0.333333)
+shadow_size = 1
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cj1lu"]
+bg_color = Color(0.10748, 0.10748, 0.10748, 0.470588)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.139739, 0.315466, 0.221531, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(1.41384e-07, 0.200052, 0.10239, 0.333333)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71mqq"]
+bg_color = Color(0, 0, 0, 0.470588)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.548005, 0.887068, 0.69444, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0, 0.498039, 0.286275, 0.333333)
+shadow_size = 1
+shadow_offset = Vector2(0, 3)
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r6d6q")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_nkug2")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 66.0
+offset_bottom = 64.0
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ykye")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gc0em")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cj1lu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_71mqq")
+text = "<"
+
+[node name="Panel" type="Panel" parent="Panel"]
+custom_minimum_size = Vector2(450, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_71mqq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 41.0
+grow_horizontal = 2
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Display Mode: "
+
+[node name="DisplayOptionButton" type="OptionButton" parent="Panel/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+selected = 0
+item_count = 2
+popup/item_0/text = "Widowed"
+popup/item_0/id = 0
+popup/item_1/text = "Full Screen"
+popup/item_1/id = 1
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_back_pressed"]
+[connection signal="item_selected" from="Panel/Panel/HBoxContainer/DisplayOptionButton" to="." method="_on_display_option_button_item_selected"]
