@@ -17,8 +17,8 @@ func _on_button3_pressed() -> void:
 
 
 func _on_button4_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/game4.tscn")
 
 
 func _on_button5_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/game5.tscn")

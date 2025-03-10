@@ -3,6 +3,7 @@ extends Node
 var players = []
 var current_player_index = -1
 var selection_indicators = {}
+var stone_players = []
 
 func _ready():
 	await get_tree().process_frame
@@ -13,6 +14,10 @@ func _ready():
 		selection_indicators[p] = ind
 		ind.hide()
 	if players.size() > 0: select_player(players[0])
+	
+	var stone_button = get_tree().get_first_node_in_group("stone_button")
+	if stone_button:
+		stone_button.pressed.connect(turn_selected_player_to_stone)
 
 func create_selection_indicator() -> Node2D:
 	var ind = Node2D.new()
@@ -38,7 +43,7 @@ func _input(event):
 func cycle_player_selection():
 	if players.size() == 0: return
 	
-	var available_players = players.filter(func(p): return not p.is_in_portal())
+	var available_players = players.filter(func(p): return not p.is_in_portal() and not stone_players.has(p) and p.visible)
 	if available_players.is_empty(): return
 	
 	if current_player_index >= 0 and current_player_index < players.size():
@@ -61,7 +66,7 @@ func select_player_at_position(pos):
 	var results = space.intersect_point(query)
 	for result in results:
 		var collider = result.collider
-		if collider.is_in_group("players") and not collider.is_in_portal():
+		if collider.is_in_group("players") and not collider.is_in_portal() and not stone_players.has(collider) and collider.visible:
 			if collider.selected: deselect_all_players()
 			else: select_player(collider)
 			break
@@ -77,3 +82,19 @@ func deselect_all_players():
 		p.selected = false
 		selection_indicators[p].hide()
 	current_player_index = -1
+
+func turn_selected_player_to_stone():
+	if current_player_index >= 0 and current_player_index < players.size():
+		var player = players[current_player_index]
+		if player and not player.is_in_portal():
+			player.set_visibility(false)
+			player.set_movement_enabled(false)
+			stone_players.append(player)
+			deselect_all_players()
+			
+			var root = get_tree().root
+			var current_scene = root.get_child(root.get_child_count() - 1)
+			var tilemap = current_scene.get_node("TileMap")
+			if tilemap:
+				var tile_pos = tilemap.local_to_map(tilemap.to_local(player.global_position))
+				tilemap.set_cell(0, tile_pos, 0, Vector2i(0, 0))
