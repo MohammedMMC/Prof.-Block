@@ -36,20 +36,23 @@ func _input(event):
 		select_player_at_position(get_viewport().get_mouse_position())
 
 func cycle_player_selection():
-	if players.size() == 0:
-		return
-		
+	if players.size() == 0: return
+	
+	var available_players = players.filter(func(p): return not p.is_in_portal())
+	if available_players.is_empty(): return
+	
 	if current_player_index >= 0 and current_player_index < players.size():
 		players[current_player_index].selected = false
 		selection_indicators[players[current_player_index]].hide()
 	
-	current_player_index = (current_player_index + 1) % players.size()
-	select_player(players[current_player_index])
+	var current_player = players[current_player_index] if current_player_index >= 0 else null
+	var current_idx = available_players.find(current_player)
+	var next_idx = (current_idx + 1) % available_players.size()
+	select_player(available_players[next_idx])
 
 func select_player_at_position(pos):
-	if players.size() == 0:
-		return
-		
+	if players.size() == 0: return
+	
 	var space = players[0].get_world_2d().direct_space_state
 	var query = PhysicsPointQueryParameters2D.new()
 	query.position = pos
@@ -58,11 +61,9 @@ func select_player_at_position(pos):
 	var results = space.intersect_point(query)
 	for result in results:
 		var collider = result.collider
-		if collider.is_in_group("players"):
-			if collider.selected:
-				deselect_all_players()
-			else:
-				select_player(collider)
+		if collider.is_in_group("players") and not collider.is_in_portal():
+			if collider.selected: deselect_all_players()
+			else: select_player(collider)
 			break
 
 func select_player(player):

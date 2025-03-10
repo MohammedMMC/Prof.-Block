@@ -76,6 +76,12 @@ func is_occupied_portal_at_position(pos: Vector2) -> bool:
 			return true
 	return false
 
+func is_in_portal() -> bool:
+	for portal in get_tree().get_nodes_in_group("portals"):
+		if portal.overlapping_players.has(self):
+			return true
+	return false
+
 func _physics_process(_delta):
 	if target_position:
 		velocity = (target_position - global_position).normalized() * SPEED
@@ -176,5 +182,5 @@ func set_movement_enabled(enabled):
 			movement_enabled = false
 			velocity = Vector2.ZERO
 
-func set_visibility(is_visible: bool):
-	sprite.visible = is_visible
+func set_visibility(visible_state: bool):
+	sprite.visible = visible_state
