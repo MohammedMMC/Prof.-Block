@@ -47,6 +47,8 @@ func _on_body_entered(body):
 	if body.has_method("set_visibility"):
 		body.set_visibility(false)
 		body.set_movement_enabled(false)
+	
+	get_tree().call_group("game_manager", "_on_player_entered_portal")
 
 func extract_color_from_path(path: String) -> String:
 	var filename = path.get_file()

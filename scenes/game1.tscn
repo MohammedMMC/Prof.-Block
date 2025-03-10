@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ck11eytq6qyrg"]
+[gd_scene load_steps=13 format=3 uid="uid://ck11eytq6qyrg"]
 
 [ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_fpjbw"]
 [ext_resource type="Texture2D" uid="uid://cpafu0aoasaeo" path="res://images/map-tilemap.png" id="1_q6r6c"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://duub8n618rwdb" path="res://images/portals/portal-blue.png" id="3_epypp"]
 [ext_resource type="PackedScene" uid="uid://b8jg0cdw6h2ml" path="res://scenes/portal.tscn" id="6_portal"]
 [ext_resource type="Script" uid="uid://cfbndwix5te3d" path="res://scripts/player_controller.gd" id="7_r8xva"]
+[ext_resource type="PackedScene" uid="uid://1775noeunqyk" path="res://scenes/win_message.tscn" id="8_winmsg"]
+[ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="9_gamemgr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bcwkp"]
 texture = ExtResource("1_fpjbw")
@@ -55,3 +57,13 @@ portal_texture = ExtResource("3_epypp")
 
 [node name="PlayerController" type="Node" parent="."]
 script = ExtResource("7_r8xva")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("9_gamemgr")
+
+[node name="WinMessage" parent="." instance=ExtResource("8_winmsg")]
+visible = false
+offset_right = 640.0
+offset_bottom = 360.0
+
+[connection signal="game_won" from="GameManager" to="WinMessage" method="show"]
