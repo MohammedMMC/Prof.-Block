@@ -13,30 +13,50 @@ var falling = false
 var pending_sprite_change = null
 var pending_tileset_change = null
 var pending_disable_movement = false
+var selected = false
+
+@export var player_id = 1
+@export var player_texture: Texture2D:
+	set(value):
+		player_texture = value
+		if has_node("Sprite2D"): $Sprite2D.texture = value
 
 func _ready():
+	collision_layer = 2 if player_id == 1 else 4
+	collision_mask = 5 if player_id == 1 else 3
+	if player_texture: $Sprite2D.texture = player_texture
 	add_to_group("players")
 	sprite = $Sprite2D
 	sprite_width = sprite.texture.get_width() * sprite.scale.x
-	var gravity_timer = Timer.new()
-	gravity_timer.wait_time = 0.2
-	gravity_timer.connect("timeout", func(): if not target_position and not has_floor_below() and movement_enabled: fall_down())
-	add_child(gravity_timer)
-	gravity_timer.start()
+	var timer = Timer.new()
+	timer.wait_time = 0.2
+	timer.connect("timeout", func(): if not target_position and not has_floor_below() and movement_enabled: fall_down())
+	add_child(timer)
+	timer.start()
 
 func is_path_clear(direction: Vector2) -> bool:
 	var query = PhysicsRayQueryParameters2D.new()
 	query.from = global_position
 	query.to = global_position + (direction * sprite_width)
 	query.exclude = [self]
-	return get_world_2d().direct_space_state.intersect_ray(query).is_empty()
+	var result = get_world_2d().direct_space_state.intersect_ray(query)
+	
+	if result.is_empty():
+		return true
+	
+	return result["collider"].is_in_group("players") and direction.y == 0
 
 func has_floor_below() -> bool:
 	var query = PhysicsRayQueryParameters2D.new()
 	query.from = global_position
 	query.to = global_position + Vector2(0, sprite_width)
 	query.exclude = [self]
-	return not get_world_2d().direct_space_state.intersect_ray(query).is_empty()
+	var result = get_world_2d().direct_space_state.intersect_ray(query)
+	
+	if not result.is_empty():
+		var collider = result["collider"]
+		return collider.is_in_group("players") or not collider.is_in_group("portals")
+	return false
 
 func fall_down():
 	if target_position: return
@@ -50,10 +70,15 @@ func fall_down():
 		falling = false
 		can_move = true
 
+func is_occupied_portal_at_position(pos: Vector2) -> bool:
+	for portal in get_tree().get_nodes_in_group("portals"):
+		if portal.global_position.distance_to(pos) < 5 and portal.has_player_inside:
+			return true
+	return false
+
 func _physics_process(_delta):
 	if target_position:
-		var direction = (target_position - global_position).normalized()
-		velocity = direction * SPEED
+		velocity = (target_position - global_position).normalized() * SPEED
 		
 		if not falling:
 			var progress = global_position.distance_to(start_position) / start_position.distance_to(target_position)
@@ -77,15 +102,19 @@ func _physics_process(_delta):
 		velocity = Vector2.ZERO
 	elif not has_floor_below():
 		call_deferred("fall_down")
-	elif can_move and movement_enabled:
+	elif can_move and movement_enabled and selected:
 		var direction = Vector2.ZERO
 		if Input.is_action_just_pressed("ui_right"): direction.x = 1
 		elif Input.is_action_just_pressed("ui_left"): direction.x = -1
 			
 		if direction != Vector2.ZERO and is_path_clear(direction):
+			var potential_position = global_position + (direction * sprite_width)
+			if is_occupied_portal_at_position(potential_position):
+				return
+				
 			start_position = global_position
 			move_direction = direction
-			target_position = global_position + (direction * sprite_width)
+			target_position = potential_position
 			can_move = false
 			initial_rotation = sprite.rotation
 			check_portal_status()
@@ -116,10 +145,8 @@ func change_sprite_texture(new_texture_path):
 		reset_rotation()
 
 func queue_sprite_change(texture_path):
-	if target_position:
-		pending_sprite_change = texture_path
-	else:
-		change_sprite_texture(texture_path)
+	if target_position: pending_sprite_change = texture_path
+	else: change_sprite_texture(texture_path)
 
 func change_to_tileset_sprite(_tilemap):
 	var tileset_texture = preload("res://images/map-tilemap.png")
@@ -132,10 +159,8 @@ func change_to_tileset_sprite(_tilemap):
 		reset_rotation()
 
 func queue_tileset_sprite_change(tilemap):
-	if target_position:
-		pending_tileset_change = tilemap
-	else:
-		change_to_tileset_sprite(tilemap)
+	if target_position: pending_tileset_change = tilemap
+	else: change_to_tileset_sprite(tilemap)
 
 func reset_rotation():
 	sprite.rotation = 0
@@ -146,8 +171,10 @@ func set_movement_enabled(enabled):
 		movement_enabled = true
 		pending_disable_movement = false
 	else:
-		if target_position:
-			pending_disable_movement = true
+		if target_position: pending_disable_movement = true
 		else:
 			movement_enabled = false
 			velocity = Vector2.ZERO
+
+func set_visibility(is_visible: bool):
+	sprite.visible = is_visible
