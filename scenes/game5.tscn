@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://cfbndwix5te3d" path="res://scripts/player_controller.gd" id="9_ympav"]
 [ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="10_ynyan"]
 [ext_resource type="PackedScene" uid="uid://1775noeunqyk" path="res://scenes/win_message.tscn" id="11_ism2u"]
-[ext_resource type="Theme" path="res://themes/deselect_button.tres" id="12_theme"]
+[ext_resource type="Theme" uid="uid://dih5k2pbo1bur" path="res://themes/deselect_button.tres" id="12_theme"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bcwkp"]
 texture = ExtResource("1_uu8b4")
@@ -94,10 +94,10 @@ offset_right = 640.0
 offset_bottom = 360.0
 
 [node name="StoneButton" type="Button" parent="." groups=["stone_button"]]
-offset_left = 540.0
-offset_top = 320.0
-offset_right = 620.0
-offset_bottom = 340.0
+offset_left = 511.0
+offset_top = 317.0
+offset_right = 624.0
+offset_bottom = 348.0
 theme = ExtResource("12_theme")
 text = "Turn to Stone"
 

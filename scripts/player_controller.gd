@@ -37,6 +37,7 @@ func create_selection_indicator() -> Node2D:
 
 func _input(event):
 	if event.is_action_pressed("ui_focus_next"): cycle_player_selection()
+	if event.is_action_pressed("ui_e"): turn_selected_player_to_stone()
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		select_player_at_position(get_viewport().get_mouse_position())
 
