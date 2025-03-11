@@ -22,8 +22,8 @@ var selected = false
 		if has_node("Sprite2D"): $Sprite2D.texture = value
 
 func _ready():
-	collision_layer = 2 if player_id == 1 else 4
-	collision_mask = 5 if player_id == 1 else 3
+	collision_layer = 2
+	collision_mask = 1
 	if player_texture: $Sprite2D.texture = player_texture
 	add_to_group("players")
 	sprite = $Sprite2D
@@ -44,7 +44,7 @@ func is_path_clear(direction: Vector2) -> bool:
 	if result.is_empty():
 		return true
 	
-	return result["collider"].is_in_group("players") and direction.y == 0
+	return result["collider"].is_in_group("players")
 
 func has_floor_below() -> bool:
 	var query = PhysicsRayQueryParameters2D.new()
@@ -55,7 +55,7 @@ func has_floor_below() -> bool:
 	
 	if not result.is_empty():
 		var collider = result["collider"]
-		return collider.is_in_group("players") or not collider.is_in_group("portals")
+		return not collider.is_in_group("players") and not collider.is_in_group("portals")
 	return false
 
 func fall_down():
