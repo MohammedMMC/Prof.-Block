@@ -88,7 +88,6 @@ func select_player(player):
 
 func deselect_all_players():
 	for p in players:
-		print(selection_indicators[p])
 		p.selected = false
 		selection_indicators[p].hide()
 	current_player_index = -1

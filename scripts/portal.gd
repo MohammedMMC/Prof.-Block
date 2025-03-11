@@ -25,7 +25,7 @@ func _ready():
 	add_child(area)
 
 func _on_body_entered(body):
-	if not body.is_in_group("players") or overlapping_players.has(body): return
+	if not body.is_in_group("players") or overlapping_players.has(body) or not body.has_floor_below(): return
 	
 	if has_player_inside: return
 	
