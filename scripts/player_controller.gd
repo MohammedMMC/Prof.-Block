@@ -6,6 +6,7 @@ var selection_indicators = {}
 var stone_players = []
 
 func _ready():
+	add_to_group("player_controller")
 	await get_tree().process_frame
 	players = get_tree().get_nodes_in_group("players")
 	for p in players:
@@ -64,6 +65,8 @@ func select_player_at_position(pos):
 	if players.size() == 0: return
 	
 	players = players.filter(func(p): return is_instance_valid(p))
+	if players.is_empty(): return 
+	
 	var space = players[0].get_world_2d().direct_space_state
 	var query = PhysicsPointQueryParameters2D.new()
 	query.position = pos
@@ -85,6 +88,7 @@ func select_player(player):
 
 func deselect_all_players():
 	for p in players:
+		print(selection_indicators[p])
 		p.selected = false
 		selection_indicators[p].hide()
 	current_player_index = -1
@@ -92,9 +96,11 @@ func deselect_all_players():
 func turn_selected_player_to_stone():
 	if current_player_index >= 0 and current_player_index < players.size():
 		var player = players[current_player_index]
-		if player and not player.is_in_any_portal() and player.has_floor_below() and player.has_floor_below():
+		if player and not player.is_in_any_portal() and not player.is_in_portal() and player.has_floor_below():
 			stone_players.append(player)
+			var index_to_remove = current_player_index
 			deselect_all_players()
+			players.remove_at(index_to_remove)
 			player.queue_free()
 			
 			var root = get_tree().root

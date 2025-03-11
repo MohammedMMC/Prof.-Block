@@ -18,8 +18,8 @@ func _ready():
 	collision.shape = $CollisionShape2D.shape.duplicate()
 	area.add_child(collision)
 	
-	area.collision_layer = 0 
-	area.collision_mask = 3  
+	area.collision_layer = 0
+	area.collision_mask = 3
 	
 	area.connect("body_entered", _on_body_entered)
 	add_child(area)
@@ -45,9 +45,10 @@ func _on_body_entered(body):
 		var tile_pos = tilemap.local_to_map(tilemap.to_local(global_position))
 		tilemap.set_cell(0, tile_pos, 0, Vector2i(0, 0))
 	
-	if body.has_method("set_visibility"):
-		body.set_visibility(false)
-		body.set_movement_enabled(false)
+	var player_controller = get_tree().get_first_node_in_group("player_controller")
+	if player_controller: player_controller.deselect_all_players()
+	
+	body.queue_free()
 	
 	get_tree().call_group("game_manager", "_on_player_entered_portal")
 
