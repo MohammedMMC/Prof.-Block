@@ -13,6 +13,7 @@ func _ready():
 		$Sprite2D.texture = portal_texture
 	add_to_group("portals")
 	var area = Area2D.new()
+	area.name = "CollisionArea"
 	var collision = CollisionShape2D.new()
 	collision.shape = $CollisionShape2D.shape.duplicate()
 	area.add_child(collision)

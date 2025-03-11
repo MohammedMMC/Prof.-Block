@@ -44,7 +44,11 @@ func _input(event):
 func cycle_player_selection():
 	if players.size() == 0: return
 	
-	var available_players = players.filter(func(p): return not p.is_in_portal() and not stone_players.has(p) and p.visible)
+	players = players.filter(func(p): return is_instance_valid(p))
+	
+	var available_players = players.filter(func(p): 
+		return is_instance_valid(p) and not p.is_in_portal() and not stone_players.has(p) and p.visible
+	)
 	if available_players.is_empty(): return
 	
 	if current_player_index >= 0 and current_player_index < players.size():
@@ -59,6 +63,7 @@ func cycle_player_selection():
 func select_player_at_position(pos):
 	if players.size() == 0: return
 	
+	players = players.filter(func(p): return is_instance_valid(p))
 	var space = players[0].get_world_2d().direct_space_state
 	var query = PhysicsPointQueryParameters2D.new()
 	query.position = pos
@@ -87,11 +92,10 @@ func deselect_all_players():
 func turn_selected_player_to_stone():
 	if current_player_index >= 0 and current_player_index < players.size():
 		var player = players[current_player_index]
-		if player and not player.is_in_portal():
-			player.set_visibility(false)
-			player.set_movement_enabled(false)
+		if player and not player.is_in_any_portal():
 			stone_players.append(player)
 			deselect_all_players()
+			player.queue_free()
 			
 			var root = get_tree().root
 			var current_scene = root.get_child(root.get_child_count() - 1)

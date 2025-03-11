@@ -82,6 +82,13 @@ func is_in_portal() -> bool:
 			return true
 	return false
 
+func is_in_any_portal() -> bool:
+	for portal in get_tree().get_nodes_in_group("portals"):
+		var area = portal.get_node_or_null("CollisionArea")
+		if area and area.overlaps_body(self):
+			return true
+	return false
+
 func _physics_process(_delta):
 	if target_position:
 		velocity = (target_position - global_position).normalized() * SPEED
