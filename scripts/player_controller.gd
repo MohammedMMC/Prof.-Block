@@ -92,7 +92,7 @@ func deselect_all_players():
 func turn_selected_player_to_stone():
 	if current_player_index >= 0 and current_player_index < players.size():
 		var player = players[current_player_index]
-		if player and not player.is_in_any_portal():
+		if player and not player.is_in_any_portal() and player.has_floor_below() and player.has_floor_below():
 			stone_players.append(player)
 			deselect_all_players()
 			player.queue_free()
