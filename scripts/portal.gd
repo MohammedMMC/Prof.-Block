@@ -22,11 +22,20 @@ func _ready():
 	area.collision_mask = 3
 	
 	area.connect("body_entered", _on_body_entered)
+	area.connect("body_exited", _on_body_exited)
 	add_child(area)
 
-func _on_body_entered(body):
-	if not body.is_in_group("players") or overlapping_players.has(body) or not body.has_floor_below(): return
+func _on_body_exited(body):
+	if not body.is_in_group("players"): return
+	overlapping_players.erase(body)
+	if overlapping_players.size() == 1:
+		_on_body_entered(overlapping_players[0], true)
+
+func _on_body_entered(body, called_from_exit = false):
+	if not body.is_in_group("players") or not self.has_floor_below(): return
+	if not overlapping_players.has(body): overlapping_players.append(body)
 	
+	if overlapping_players.size() > 1: return
 	if has_player_inside: return
 	
 	var portal_color = extract_color_from_path(portal_texture.resource_path)
@@ -34,7 +43,6 @@ func _on_body_entered(body):
 	
 	if portal_color != player_color: return
 	
-	overlapping_players.append(body)
 	has_player_inside = true
 	$Sprite2D.visible = false
 	
@@ -46,7 +54,7 @@ func _on_body_entered(body):
 		tilemap.set_cell(0, tile_pos, 0, Vector2i(0, 0))
 	
 	var player_controller = get_tree().get_first_node_in_group("player_controller")
-	if player_controller: player_controller.deselect_all_players()
+	if player_controller and not called_from_exit: player_controller.deselect_all_players()
 	
 	body.queue_free()
 	
@@ -60,3 +68,16 @@ func extract_color_from_path(path: String) -> String:
 		return filename.split(".")[0]
 
 func is_player_inside(): return has_player_inside
+
+func has_floor_below() -> bool:
+	var query = PhysicsRayQueryParameters2D.new()
+	query.from = global_position
+	query.to = global_position + Vector2(0, $Sprite2D.texture.get_height() * $Sprite2D.scale.y)
+	query.exclude = [self]
+	query.collision_mask = 1
+	var result = get_world_2d().direct_space_state.intersect_ray(query)
+	
+	if not result.is_empty():
+		var collider = result["collider"]
+		return not collider.is_in_group("players") and not collider.is_in_group("portals")
+	return false

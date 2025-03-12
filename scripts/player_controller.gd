@@ -3,7 +3,6 @@ extends Node
 var players = []
 var current_player_index = -1
 var selection_indicators = {}
-var stone_players = []
 
 func _ready():
 	add_to_group("player_controller")
@@ -47,8 +46,8 @@ func cycle_player_selection():
 	
 	players = players.filter(func(p): return is_instance_valid(p))
 	
-	var available_players = players.filter(func(p): 
-		return is_instance_valid(p) and not p.is_in_portal() and not stone_players.has(p) and p.visible
+	var available_players = players.filter(func(p):
+		return is_instance_valid(p) and p.visible
 	)
 	if available_players.is_empty(): return
 	
@@ -65,7 +64,7 @@ func select_player_at_position(pos):
 	if players.size() == 0: return
 	
 	players = players.filter(func(p): return is_instance_valid(p))
-	if players.is_empty(): return 
+	if players.is_empty(): return
 	
 	var space = players[0].get_world_2d().direct_space_state
 	var query = PhysicsPointQueryParameters2D.new()
@@ -75,7 +74,7 @@ func select_player_at_position(pos):
 	var results = space.intersect_point(query)
 	for result in results:
 		var collider = result.collider
-		if collider.is_in_group("players") and not collider.is_in_portal() and not stone_players.has(collider) and collider.visible:
+		if collider.is_in_group("players") and collider.visible:
 			if collider.selected: deselect_all_players()
 			else: select_player(collider)
 			break
@@ -88,6 +87,7 @@ func select_player(player):
 
 func deselect_all_players():
 	for p in players:
+		if not p or not p.visible: return
 		p.selected = false
 		selection_indicators[p].hide()
 	current_player_index = -1
@@ -95,8 +95,7 @@ func deselect_all_players():
 func turn_selected_player_to_stone():
 	if current_player_index >= 0 and current_player_index < players.size():
 		var player = players[current_player_index]
-		if player and not player.is_in_any_portal() and not player.is_in_portal() and player.has_floor_below():
-			stone_players.append(player)
+		if player and get_players_at_same_position(player) == 1 and not player.is_in_any_portal() and not player.is_in_portal() and player.has_floor_below():
 			var index_to_remove = current_player_index
 			deselect_all_players()
 			players.remove_at(index_to_remove)
@@ -108,3 +107,11 @@ func turn_selected_player_to_stone():
 			if tilemap:
 				var tile_pos = tilemap.local_to_map(tilemap.to_local(player.global_position))
 				tilemap.set_cell(0, tile_pos, 0, Vector2i(0, 0))
+
+func get_players_at_same_position(target_player) -> int:
+	if not is_instance_valid(target_player) or players.is_empty():
+		return 0
+		
+	return players.filter(func(p):
+		return is_instance_valid(p) and p.visible and p.global_position.distance_to(target_player.global_position) <= 5.0
+	).size()

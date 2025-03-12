@@ -1,12 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://dk17dh8gy2rqv"]
+[gd_scene load_steps=16 format=3 uid="uid://dk17dh8gy2rqv"]
 
 [ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_nj8h8"]
 [ext_resource type="Texture2D" uid="uid://cpafu0aoasaeo" path="res://images/map-tilemap.png" id="2_ihwkr"]
 [ext_resource type="PackedScene" uid="uid://bbkd4nvfsijk6" path="res://scenes/player.tscn" id="2_player"]
 [ext_resource type="Texture2D" uid="uid://b0hdgn37slryw" path="res://images/players/red.png" id="4_nj8h8"]
+[ext_resource type="Texture2D" uid="uid://c6tc3khx6q4oj" path="res://images/players/blue.png" id="5_88gb1"]
 [ext_resource type="Texture2D" uid="uid://crf14muff1dpr" path="res://images/portals/portal-red.png" id="6_ihwkr"]
 [ext_resource type="PackedScene" uid="uid://b8jg0cdw6h2ml" path="res://scenes/portal.tscn" id="6_portal"]
 [ext_resource type="Script" uid="uid://cfbndwix5te3d" path="res://scripts/player_controller.gd" id="7_lnvf7"]
+[ext_resource type="Texture2D" uid="uid://duub8n618rwdb" path="res://images/portals/portal-blue.png" id="8_l8htk"]
 [ext_resource type="PackedScene" uid="uid://1775noeunqyk" path="res://scenes/win_message.tscn" id="8_winmsg"]
 [ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="9_gamemgr"]
 [ext_resource type="Theme" uid="uid://dih5k2pbo1bur" path="res://themes/deselect_button.tres" id="10_theme"]
@@ -46,15 +48,24 @@ position = Vector2(128, 40)
 tile_set = SubResource("TileSet_ir8iy")
 rendering_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(131071, 0, 0, 65537, 0, 0, 65536, 196608, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 131084, 0, 0, 196620, 0, 0, 262156, 0, 0, 327692, 0, 0, 393228, 0, 0, 458764, 0, 0, 458763, 0, 0, 458762, 196608, 0, 458761, 0, 0, 458760, 0, 0, 458759, 0, 0, 458758, 0, 0, 458757, 0, 0, 458756, 0, 0, 458755, 0, 0, 458754, 0, 0, 458753, 0, 0, 458752, 0, 0, 524287, 196608, 0, 458751, 0, 0, 393215, 0, 0, 327679, 0, 0, 262143, 0, 0, 196607, 0, 0, 196616, 0, 0, 196615, 0, 0, 196614, 0, 0, 196613, 0, 0, 196612, 0, 0, 196611, 0, 0, 196610, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 196608, 0, 262152, 0, 0, 196609, 0, 0, 262145, 196608, 0, 393226, 0, 0, 393225, 0, 0)
+layer_0/tile_data = PackedInt32Array(131071, 0, 0, 65537, 0, 0, 65536, 196608, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 131084, 0, 0, 196620, 0, 0, 262156, 0, 0, 327692, 0, 0, 393228, 0, 0, 458764, 0, 0, 458763, 0, 0, 458762, 196608, 0, 458761, 0, 0, 458760, 0, 0, 458759, 0, 0, 458758, 0, 0, 458757, 0, 0, 458756, 0, 0, 458755, 0, 0, 458754, 0, 0, 458753, 0, 0, 458752, 0, 0, 524287, 196608, 0, 458751, 0, 0, 393215, 0, 0, 327679, 0, 0, 262143, 0, 0, 196607, 0, 0, 196616, 0, 0, 196615, 0, 0, 196614, 0, 0, 196613, 0, 0, 196612, 0, 0, 196611, 0, 0, 196610, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 196608, 0, 262152, 0, 0, 196609, 0, 0, 262145, 196608, 0, 393226, 0, 0)
 
 [node name="player1" parent="." instance=ExtResource("2_player")]
 position = Vector2(336, 120)
 player_texture = ExtResource("4_nj8h8")
 
+[node name="player2" parent="." instance=ExtResource("2_player")]
+position = Vector2(304, 248)
+player_id = 2
+player_texture = ExtResource("5_88gb1")
+
 [node name="portal" parent="." instance=ExtResource("6_portal")]
 position = Vector2(496, 248)
 portal_texture = ExtResource("6_ihwkr")
+
+[node name="portal2" parent="." instance=ExtResource("6_portal")]
+position = Vector2(432, 248)
+portal_texture = ExtResource("8_l8htk")
 
 [node name="PlayerController" type="Node" parent="."]
 script = ExtResource("7_lnvf7")
