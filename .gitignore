@@ -4,3 +4,4 @@
 .builds/
 .vscode/
 /android/
+export_presets.cfg
