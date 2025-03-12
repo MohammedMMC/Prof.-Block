@@ -15,7 +15,6 @@ var pending_tileset_change = null
 var pending_disable_movement = false
 var selected = false
 
-@export var player_id = 1
 @export var player_texture: Texture2D:
 	set(value):
 		player_texture = value

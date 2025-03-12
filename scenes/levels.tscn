@@ -209,15 +209,19 @@ offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel2/Container"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/Container"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel2/Container/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/Container/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/Container/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Panel2/Container/HBoxContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="Panel2/Container/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ly2og")
@@ -225,7 +229,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5ekxl")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ibiju")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1jewu")
 
-[node name="Label" type="Label" parent="Panel2/Container/HBoxContainer/VBoxContainer/Button"]
+[node name="Label" type="Label" parent="Panel2/Container/VBoxContainer/HBoxContainer/VBoxContainer/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -240,11 +244,11 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel2/Container/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel2/Container/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Panel2/Container/HBoxContainer/VBoxContainer2"]
+[node name="Button" type="Button" parent="Panel2/Container/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ly2og")
@@ -252,7 +256,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5ekxl")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ibiju")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1jewu")
 
-[node name="Label" type="Label" parent="Panel2/Container/HBoxContainer/VBoxContainer2/Button"]
+[node name="Label" type="Label" parent="Panel2/Container/VBoxContainer/HBoxContainer/VBoxContainer2/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -267,11 +271,11 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="Panel2/Container/HBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="Panel2/Container/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Panel2/Container/HBoxContainer/VBoxContainer3"]
+[node name="Button" type="Button" parent="Panel2/Container/VBoxContainer/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ly2og")
@@ -279,7 +283,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5ekxl")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ibiju")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1jewu")
 
-[node name="Label" type="Label" parent="Panel2/Container/HBoxContainer/VBoxContainer3/Button"]
+[node name="Label" type="Label" parent="Panel2/Container/VBoxContainer/HBoxContainer/VBoxContainer3/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -294,11 +298,11 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="Panel2/Container/HBoxContainer"]
+[node name="VBoxContainer4" type="VBoxContainer" parent="Panel2/Container/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Panel2/Container/HBoxContainer/VBoxContainer4"]
+[node name="Button" type="Button" parent="Panel2/Container/VBoxContainer/HBoxContainer/VBoxContainer4"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ly2og")
@@ -306,7 +310,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5ekxl")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ibiju")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1jewu")
 
-[node name="Label" type="Label" parent="Panel2/Container/HBoxContainer/VBoxContainer4/Button"]
+[node name="Label" type="Label" parent="Panel2/Container/VBoxContainer/HBoxContainer/VBoxContainer4/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -321,11 +325,11 @@ text = "4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer5" type="VBoxContainer" parent="Panel2/Container/HBoxContainer"]
+[node name="VBoxContainer5" type="VBoxContainer" parent="Panel2/Container/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Panel2/Container/HBoxContainer/VBoxContainer5"]
+[node name="Button" type="Button" parent="Panel2/Container/VBoxContainer/HBoxContainer/VBoxContainer5"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ly2og")
@@ -333,7 +337,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5ekxl")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ibiju")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1jewu")
 
-[node name="Label" type="Label" parent="Panel2/Container/HBoxContainer/VBoxContainer5/Button"]
+[node name="Label" type="Label" parent="Panel2/Container/VBoxContainer/HBoxContainer/VBoxContainer5/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -348,9 +352,125 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel2/Container/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/Container/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel2/Container/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ly2og")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ekxl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ibiju")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1jewu")
+
+[node name="Label" type="Label" parent="Panel2/Container/VBoxContainer/HBoxContainer2/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(5.29438e-07, 0.436877, 0.149373, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_5ekxl")
+theme_override_font_sizes/font_size = 36
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel2/Container/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel2/Container/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ly2og")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ekxl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ibiju")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1jewu")
+
+[node name="Label" type="Label" parent="Panel2/Container/VBoxContainer/HBoxContainer2/VBoxContainer2/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(5.29438e-07, 0.436877, 0.149373, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_5ekxl")
+theme_override_font_sizes/font_size = 36
+text = "7"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Panel2/Container/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel2/Container/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ly2og")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ekxl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ibiju")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1jewu")
+
+[node name="Label" type="Label" parent="Panel2/Container/VBoxContainer/HBoxContainer2/VBoxContainer3/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(5.29438e-07, 0.436877, 0.149373, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_5ekxl")
+theme_override_font_sizes/font_size = 36
+text = "8"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Panel2/Container/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel2/Container/VBoxContainer/HBoxContainer2/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ly2og")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ekxl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ibiju")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1jewu")
+
+[node name="Label" type="Label" parent="Panel2/Container/VBoxContainer/HBoxContainer2/VBoxContainer4/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(5.29438e-07, 0.436877, 0.149373, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_5ekxl")
+theme_override_font_sizes/font_size = 36
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Button" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="Panel2/Container/HBoxContainer/VBoxContainer/Button" to="." method="_on_level_button_pressed" binds=[1]]
-[connection signal="pressed" from="Panel2/Container/HBoxContainer/VBoxContainer2/Button" to="." method="_on_level_button_pressed" binds=[2]]
-[connection signal="pressed" from="Panel2/Container/HBoxContainer/VBoxContainer3/Button" to="." method="_on_level_button_pressed" binds=[3]]
-[connection signal="pressed" from="Panel2/Container/HBoxContainer/VBoxContainer4/Button" to="." method="_on_level_button_pressed" binds=[4]]
-[connection signal="pressed" from="Panel2/Container/HBoxContainer/VBoxContainer5/Button" to="." method="_on_level_button_pressed" binds=[5]]
+[connection signal="pressed" from="Panel2/Container/VBoxContainer/HBoxContainer/VBoxContainer/Button" to="." method="_on_level_button_pressed" binds= [1]]
+[connection signal="pressed" from="Panel2/Container/VBoxContainer/HBoxContainer/VBoxContainer2/Button" to="." method="_on_level_button_pressed" binds= [2]]
+[connection signal="pressed" from="Panel2/Container/VBoxContainer/HBoxContainer/VBoxContainer3/Button" to="." method="_on_level_button_pressed" binds= [3]]
+[connection signal="pressed" from="Panel2/Container/VBoxContainer/HBoxContainer/VBoxContainer4/Button" to="." method="_on_level_button_pressed" binds= [4]]
+[connection signal="pressed" from="Panel2/Container/VBoxContainer/HBoxContainer/VBoxContainer5/Button" to="." method="_on_level_button_pressed" binds= [5]]
+[connection signal="pressed" from="Panel2/Container/VBoxContainer/HBoxContainer2/VBoxContainer/Button" to="." method="_on_level_button_pressed" binds= [6]]
+[connection signal="pressed" from="Panel2/Container/VBoxContainer/HBoxContainer2/VBoxContainer2/Button" to="." method="_on_level_button_pressed" binds= [7]]
+[connection signal="pressed" from="Panel2/Container/VBoxContainer/HBoxContainer2/VBoxContainer3/Button" to="." method="_on_level_button_pressed" binds= [8]]
+[connection signal="pressed" from="Panel2/Container/VBoxContainer/HBoxContainer2/VBoxContainer4/Button" to="." method="_on_level_button_pressed" binds= [9]]

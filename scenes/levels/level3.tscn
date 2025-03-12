@@ -54,7 +54,6 @@ player_texture = ExtResource("4_522sc")
 
 [node name="player2" parent="." instance=ExtResource("3_ah4rv")]
 position = Vector2(304, 248)
-player_id = 2
 player_texture = ExtResource("5_a82vw")
 
 [node name="portal" parent="." instance=ExtResource("6_t14x3")]
