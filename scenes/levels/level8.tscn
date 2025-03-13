@@ -1,0 +1,85 @@
+[gd_scene load_steps=14 format=3 uid="uid://dll1jp7pimbpw"]
+
+[ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_uek6a"]
+[ext_resource type="Texture2D" uid="uid://cpafu0aoasaeo" path="res://images/map-tilemap.png" id="2_komt3"]
+[ext_resource type="PackedScene" uid="uid://bbkd4nvfsijk6" path="res://scenes/player.tscn" id="3_5x7nc"]
+[ext_resource type="Texture2D" uid="uid://b0hdgn37slryw" path="res://images/players/red.png" id="4_lifsd"]
+[ext_resource type="Texture2D" uid="uid://dgljmyn225m7o" path="res://images/players/grey.png" id="5_hw1kd"]
+[ext_resource type="PackedScene" uid="uid://b8jg0cdw6h2ml" path="res://scenes/portal.tscn" id="6_5v622"]
+[ext_resource type="Texture2D" uid="uid://crf14muff1dpr" path="res://images/portals/portal-red.png" id="7_ofvo0"]
+[ext_resource type="Script" uid="uid://cfbndwix5te3d" path="res://scripts/player_controller.gd" id="8_lnxpb"]
+[ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="9_250dg"]
+[ext_resource type="PackedScene" uid="uid://1775noeunqyk" path="res://scenes/win_message.tscn" id="10_wgfvi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bcwkp"]
+texture = ExtResource("1_uek6a")
+modulate_color = Color(0.942823, 0.942823, 0.942823, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4d7sh"]
+texture = ExtResource("2_komt3")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/size_in_atlas = Vector2i(2, 2)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_ir8iy"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_4d7sh")
+
+[node name="Node2D3" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bcwkp")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(208, 5)
+tile_set = SubResource("TileSet_ir8iy")
+rendering_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(131070, 196608, 0, 393213, 0, 0, 327677, 0, 0, 262141, 0, 0, 131069, 0, 0, 196605, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 196608, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 458749, 0, 0, 524285, 0, 0, 589821, 196608, 0, 262153, 0, 0, 196617, 0, 0, 131081, 0, 0, 262152, 0, 0, 262151, 0, 0, 262150, 0, 0, 589822, 0, 0, 589823, 0, 0, 524288, 0, 0, 524290, 0, 0, 524291, 0, 0, 524293, 0, 0, 524292, 0, 0, 458757, 0, 0, 458758, 0, 0, 393222, 196608, 0, 327686, 0, 0, 327684, 0, 0, 327683, 0, 0, 327682, 196608, 0)
+
+[node name="player1" parent="." instance=ExtResource("3_5x7nc")]
+position = Vector2(448, 117)
+player_texture = ExtResource("4_lifsd")
+
+[node name="player2" parent="." instance=ExtResource("3_5x7nc")]
+position = Vector2(320, 149)
+player_texture = ExtResource("5_hw1kd")
+
+[node name="player3" parent="." instance=ExtResource("3_5x7nc")]
+position = Vector2(288, 149)
+player_texture = ExtResource("5_hw1kd")
+
+[node name="portal" parent="." instance=ExtResource("6_5v622")]
+position = Vector2(256, 213)
+portal_texture = ExtResource("7_ofvo0")
+
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource("8_lnxpb")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("9_250dg")
+
+[node name="WinMessage" parent="." instance=ExtResource("10_wgfvi")]
+visible = false
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="StoneButton" type="Button" parent="." groups=["stone_button"]]
+offset_left = 511.0
+offset_top = 317.0
+offset_right = 624.0
+offset_bottom = 348.0
+text = "Turn to Stone"
+
+[connection signal="game_won" from="GameManager" to="WinMessage" method="show"]

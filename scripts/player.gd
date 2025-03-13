@@ -21,9 +21,9 @@ var selected = false
 		if has_node("Sprite2D"): $Sprite2D.texture = value
 
 func _ready():
-	collision_layer = 2
-	collision_mask = 1
 	if player_texture: $Sprite2D.texture = player_texture
+	collision_layer = 3 if player_texture.resource_path.ends_with("grey.png") else 2
+	collision_mask = 3 if player_texture.resource_path.ends_with("grey.png") else 1
 	add_to_group("players")
 	sprite = $Sprite2D
 	sprite_width = sprite.texture.get_width() * sprite.scale.x
@@ -118,7 +118,7 @@ func _physics_process(_delta):
 		var direction = Vector2.ZERO
 		if Input.is_action_just_pressed("ui_right"): direction.x = 1
 		elif Input.is_action_just_pressed("ui_left"): direction.x = -1
-			
+		
 		if direction != Vector2.ZERO and is_path_clear(direction):
 			var potential_position = global_position + (direction * sprite_width)
 			if is_occupied_portal_at_position(potential_position):

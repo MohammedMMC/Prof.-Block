@@ -95,6 +95,8 @@ func deselect_all_players():
 func turn_selected_player_to_stone():
 	if current_player_index >= 0 and current_player_index < players.size():
 		var player = players[current_player_index]
+		if player.player_texture and player.player_texture.resource_path.ends_with("grey.png"):
+			return
 		if player and get_players_at_same_position(player) == 1 and not player.is_in_any_portal() and not player.is_in_portal() and player.has_floor_below():
 			var index_to_remove = current_player_index
 			deselect_all_players()

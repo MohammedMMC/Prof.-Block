@@ -74,10 +74,12 @@ func has_floor_below() -> bool:
 	query.from = global_position
 	query.to = global_position + Vector2(0, $Sprite2D.texture.get_height() * $Sprite2D.scale.y)
 	query.exclude = [self]
-	query.collision_mask = 1
+	query.collision_mask = 3
 	var result = get_world_2d().direct_space_state.intersect_ray(query)
 	
 	if not result.is_empty():
 		var collider = result["collider"]
+		if collider.is_in_group("players") and collider.player_texture and collider.player_texture.resource_path.ends_with("grey.png"):
+			return true
 		return not collider.is_in_group("players") and not collider.is_in_group("portals")
 	return false
