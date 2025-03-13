@@ -43,7 +43,15 @@ func is_path_clear(direction: Vector2) -> bool:
 	if result.is_empty():
 		return true
 	
-	return result["collider"].is_in_group("players")
+	var collider = result["collider"]
+	if collider.is_in_group("players"):
+		if player_texture and player_texture.resource_path.ends_with("grey.png") and direction.y == 0:
+			return not (collider.player_texture and collider.player_texture.resource_path.ends_with("grey.png"))
+		if collider.player_texture and collider.player_texture.resource_path.ends_with("grey.png"):
+			return false
+		return true
+	
+	return false
 
 func has_floor_below() -> bool:
 	var query = PhysicsRayQueryParameters2D.new()
@@ -54,7 +62,13 @@ func has_floor_below() -> bool:
 	
 	if not result.is_empty():
 		var collider = result["collider"]
-		return not collider.is_in_group("players") and not collider.is_in_group("portals")
+		if collider.is_in_group("players"):
+			if player_texture and player_texture.resource_path.ends_with("grey.png"):
+				return true
+			if collider.player_texture and collider.player_texture.resource_path.ends_with("grey.png"):
+				return true
+			return false
+		return not collider.is_in_group("portals")
 	return false
 
 func fall_down():
@@ -119,7 +133,18 @@ func _physics_process(_delta):
 		if Input.is_action_just_pressed("ui_right"): direction.x = 1
 		elif Input.is_action_just_pressed("ui_left"): direction.x = -1
 		
-		if direction != Vector2.ZERO and is_path_clear(direction):
+		# Special case for grey players on normal players
+		var is_grey_on_player = false
+		if player_texture and player_texture.resource_path.ends_with("grey.png"):
+			var query = PhysicsRayQueryParameters2D.new()
+			query.from = global_position
+			query.to = global_position + Vector2(0, sprite_width)
+			query.exclude = [self]
+			var result = get_world_2d().direct_space_state.intersect_ray(query)
+			if not result.is_empty() and result["collider"].is_in_group("players"):
+				is_grey_on_player = true
+		
+		if direction != Vector2.ZERO and (is_grey_on_player or is_path_clear(direction)):
 			var potential_position = global_position + (direction * sprite_width)
 			if is_occupied_portal_at_position(potential_position):
 				return
