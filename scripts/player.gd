@@ -45,10 +45,12 @@ func is_path_clear(direction: Vector2) -> bool:
 	
 	var collider = result["collider"]
 	if collider.is_in_group("players"):
-		if player_texture and player_texture.resource_path.ends_with("grey.png") and direction.y == 0:
-			return not (collider.player_texture and collider.player_texture.resource_path.ends_with("grey.png"))
-		if collider.player_texture and collider.player_texture.resource_path.ends_with("grey.png"):
+		var i_am_grey = player_texture and player_texture.resource_path.ends_with("grey.png")
+		var collider_is_grey = collider.player_texture and collider.player_texture.resource_path.ends_with("grey.png")
+		if i_am_grey or (not i_am_grey and collider_is_grey):
 			return false
+		if not i_am_grey and not collider_is_grey:
+			return true
 		return true
 	
 	return false
@@ -78,7 +80,9 @@ func fall_down():
 	var down_direction = Vector2(0, 1)
 	if is_path_clear(down_direction):
 		start_position = global_position
-		target_position = global_position + (down_direction * sprite_width)
+		move_direction = down_direction
+		target_position = Vector2(global_position.x, global_position.y + sprite_width)
+		initial_rotation = sprite.rotation
 	else:
 		falling = false
 		can_move = true
@@ -117,6 +121,12 @@ func _physics_process(_delta):
 			target_position = null
 			process_pending_actions()
 			
+			if not falling:
+				var root = get_tree().get_root()
+				var moves_counter = root.find_child("MovesCounter", true, false)
+				if moves_counter and moves_counter.has_method("increment"):
+					moves_counter.increment()
+			
 			if falling:
 				falling = false
 				can_move = !call_deferred("fall_down") and has_floor_below()
@@ -132,19 +142,14 @@ func _physics_process(_delta):
 		var direction = Vector2.ZERO
 		if Input.is_action_just_pressed("ui_right"): direction.x = 1
 		elif Input.is_action_just_pressed("ui_left"): direction.x = -1
-		
-		# Special case for grey players on normal players
-		var is_grey_on_player = false
 		if player_texture and player_texture.resource_path.ends_with("grey.png"):
 			var query = PhysicsRayQueryParameters2D.new()
 			query.from = global_position
 			query.to = global_position + Vector2(0, sprite_width)
 			query.exclude = [self]
-			var result = get_world_2d().direct_space_state.intersect_ray(query)
-			if not result.is_empty() and result["collider"].is_in_group("players"):
-				is_grey_on_player = true
-		
-		if direction != Vector2.ZERO and (is_grey_on_player or is_path_clear(direction)):
+			# var result = get_world_2d().direct_space_state.intersect_ray(query)
+
+		if direction != Vector2.ZERO and is_path_clear(direction):
 			var potential_position = global_position + (direction * sprite_width)
 			if is_occupied_portal_at_position(potential_position):
 				return
