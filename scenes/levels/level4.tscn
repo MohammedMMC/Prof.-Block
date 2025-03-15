@@ -78,7 +78,8 @@ script = ExtResource("7_lnvf7")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("9_gamemgr")
+min_moves = 14
 
 [node name="UIControls" parent="." instance=ExtResource("12_d50hs")]
-
-[connection signal="game_won" from="GameManager" to="UIControls" method="display_win"]
+offset_right = 640.0
+offset_bottom = 360.0

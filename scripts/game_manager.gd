@@ -2,6 +2,10 @@ extends Node
 
 signal game_won
 
+@export var min_moves: int:
+	set(value):
+		min_moves = value
+
 func _ready():
 	add_to_group("game_manager")
 	await get_tree().process_frame

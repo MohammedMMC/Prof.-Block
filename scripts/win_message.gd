@@ -11,8 +11,13 @@ func _ready():
 func display_win():
 	var root = get_tree().get_root()
 	var moves_counter = root.find_child("MovesCounter", true, false)
+	
+	var game_manager = get_tree().get_first_node_in_group("game_manager")
 	var moves = 0
-	var min_moves = 20;
+	var min_moves = 0 
+	
+	if game_manager and game_manager.has_method("get") and "min_moves" in game_manager:
+		min_moves = game_manager.min_moves
 	
 	if moves_counter and moves_counter.has_method("get_moves"):
 		moves = moves_counter.get_moves()
