@@ -1,57 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdsv4c53vffia"]
+[gd_scene load_steps=11 format=3 uid="uid://cdsv4c53vffia"]
 
 [ext_resource type="Script" uid="uid://b50w1yf37g72q" path="res://scripts/settings.gd" id="1_r6d6q"]
 [ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_x2hje"]
+[ext_resource type="Texture2D" uid="uid://btd0lo3e5cevb" path="res://images/menus/medium-bg.png" id="3_6wm04"]
+[ext_resource type="Texture2D" uid="uid://6hp1qxxoq012" path="res://images/menus/x-button.png" id="3_f4mfi"]
+[ext_resource type="FontFile" uid="uid://dx7o1ndkvc120" path="res://fonts/pixel.ttf" id="5_es4n0"]
+[ext_resource type="Theme" uid="uid://bjhnqoepehbl8" path="res://themes/theme.tres" id="6_gjs24"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nkug2"]
 texture = ExtResource("1_x2hje")
 modulate_color = Color(0.266575, 0.266575, 0.266575, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ykye"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_es4n0"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gc0em"]
-bg_color = Color(0, 0, 0, 0.470588)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.19383, 0.415405, 0.296733, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-shadow_color = Color(9.62615e-07, 0.435949, 0.247959, 0.333333)
-shadow_size = 1
-shadow_offset = Vector2(0, 3)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gis3k"]
+texture = ExtResource("3_f4mfi")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cj1lu"]
-bg_color = Color(0.10748, 0.10748, 0.10748, 0.470588)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.139739, 0.315466, 0.221531, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-shadow_color = Color(1.41384e-07, 0.200052, 0.10239, 0.333333)
-shadow_size = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71mqq"]
-bg_color = Color(0, 0, 0, 0.470588)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.548005, 0.887068, 0.69444, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-shadow_color = Color(0, 0.498039, 0.286275, 0.333333)
-shadow_size = 1
-shadow_offset = Vector2(0, 3)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f4mfi"]
+texture = ExtResource("3_6wm04")
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -71,59 +37,70 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_nkug2")
 
-[node name="Button" type="Button" parent="Panel"]
-layout_mode = 0
-offset_left = 18.0
-offset_top = 16.0
-offset_right = 66.0
-offset_bottom = 64.0
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3ykye")
-theme_override_styles/hover = SubResource("StyleBoxFlat_gc0em")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_cj1lu")
-theme_override_styles/normal = SubResource("StyleBoxFlat_71mqq")
-text = "<"
-
-[node name="Panel" type="Panel" parent="Panel"]
-custom_minimum_size = Vector2(450, 250)
+[node name="back Button" type="Button" parent="Panel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -97.9999
+offset_top = 23.0
+offset_right = -81.9999
+offset_bottom = 39.0
+grow_horizontal = 0
+scale = Vector2(2.5, 2.5)
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_es4n0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gis3k")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gis3k")
+theme_override_styles/normal = SubResource("StyleBoxTexture_gis3k")
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.214
+anchor_top = 0.103
+anchor_right = 0.786
+anchor_bottom = 0.9
+offset_left = 0.0399933
+offset_top = -0.0800018
+offset_right = -0.0400085
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_71mqq")
+theme_override_styles/panel = SubResource("StyleBoxTexture_f4mfi")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = 41.0
-grow_horizontal = 2
-theme_override_constants/separation = 150
-alignment = 1
-
-[node name="Label" type="Label" parent="Panel/Panel/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/PanelContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-text = "Display Mode: "
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 35
 
-[node name="DisplayOptionButton" type="OptionButton" parent="Panel/Panel/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/PanelContainer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("5_es4n0")
+theme_override_font_sizes/font_size = 28
+text = "Screen Size:"
+
+[node name="DisplayOptionButton" type="OptionButton" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
 size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+theme = ExtResource("6_gjs24")
 selected = 0
 item_count = 2
-popup/item_0/text = "Widowed"
+popup/item_0/text = "Windowed"
 popup/item_0/id = 0
 popup/item_1/text = "Full Screen"
 popup/item_1/id = 1
 
-[connection signal="pressed" from="Panel/Button" to="." method="_on_back_pressed"]
-[connection signal="item_selected" from="Panel/Panel/HBoxContainer/DisplayOptionButton" to="." method="_on_display_option_button_item_selected"]
+[connection signal="pressed" from="Panel/back Button" to="." method="_on_back_button_pressed"]
+[connection signal="item_selected" from="Panel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/DisplayOptionButton" to="." method="_on_display_option_button_item_selected"]

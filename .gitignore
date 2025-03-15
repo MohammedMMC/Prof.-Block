@@ -3,5 +3,7 @@
 .aseprite/
 .builds/
 .vscode/
+/images/
+/fonts/
 /android/
 export_presets.cfg

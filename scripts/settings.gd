@@ -4,7 +4,7 @@ const SETTINGS_FILE = "user://settings.dat"
 
 var game_data = {}
 
-@onready var display_options_button = $Panel/Panel/HBoxContainer/DisplayOptionButton
+@onready var display_options_button = $Panel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/DisplayOptionButton
 
 func _ready():
 	load_data()
@@ -25,11 +25,6 @@ func save_data():
 	file.store_var(game_data)
 	file.close()
 	
-
-func _on_back_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
-
-
 func _on_display_option_button_item_selected(index: int) -> void:
 	if index == 0: 
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
@@ -39,3 +34,7 @@ func _on_display_option_button_item_selected(index: int) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		game_data.fullscreen = true
 		save_data()
+
+
+func _on_back_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
