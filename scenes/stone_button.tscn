@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dp33lw8cxaknn"]
+
+[node name="StoneButton" type="Button" groups=["stone_button"]]
+offset_left = 510.0
+offset_top = 315.0
+offset_right = 623.0
+offset_bottom = 346.0
+text = "Turn to Stone"

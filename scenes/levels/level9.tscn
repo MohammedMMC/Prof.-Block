@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://k5hfp212hkqd"]
+[gd_scene load_steps=18 format=3 uid="uid://k5hfp212hkqd"]
 
 [ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_80f0i"]
 [ext_resource type="Texture2D" uid="uid://cpafu0aoasaeo" path="res://images/map-tilemap.png" id="2_1na5m"]
@@ -13,8 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://duub8n618rwdb" path="res://images/portals/portal-blue.png" id="8_xkdka"]
 [ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="9_a25dg"]
 [ext_resource type="Texture2D" uid="uid://cicoe56ne2bb8" path="res://images/portals/portal-yellow.png" id="9_fal67"]
-[ext_resource type="PackedScene" uid="uid://1775noeunqyk" path="res://scenes/win_message.tscn" id="10_2p0ou"]
-[ext_resource type="Script" uid="uid://bwm2ij4v5y2cl" path="res://scripts/moves_counter.gd" id="15_ace8g"]
+[ext_resource type="PackedScene" uid="uid://bciumb0r1tc20" path="res://scenes/ui_controls.tscn" id="11_cwf1v"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bcwkp"]
 texture = ExtResource("1_80f0i")
@@ -34,7 +33,7 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_4d7sh")
 
-[node name="Node2D3" type="Node2D"]
+[node name="Node2D4" type="Node2D"]
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
@@ -103,24 +102,8 @@ script = ExtResource("8_iek1g")
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("9_a25dg")
 
-[node name="WinMessage" parent="." instance=ExtResource("10_2p0ou")]
-visible = false
+[node name="UIControls" parent="." instance=ExtResource("11_cwf1v")]
 offset_right = 640.0
 offset_bottom = 360.0
 
-[node name="StoneButton" type="Button" parent="." groups=["stone_button"]]
-offset_left = 511.0
-offset_top = 317.0
-offset_right = 624.0
-offset_bottom = 348.0
-text = "Turn to Stone"
-
-[node name="MovesCounter" type="Label" parent="."]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 90.0
-offset_bottom = 36.0
-text = "Moves: 0"
-script = ExtResource("15_ace8g")
-
-[connection signal="game_won" from="GameManager" to="WinMessage" method="display_win"]
+[connection signal="game_won" from="GameManager" to="UIControls" method="display_win"]

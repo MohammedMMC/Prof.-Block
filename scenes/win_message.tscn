@@ -1,18 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://1775noeunqyk"]
+[gd_scene load_steps=13 format=3 uid="uid://1775noeunqyk"]
 
 [ext_resource type="Script" uid="uid://dwwclhhyju1gu" path="res://scripts/win_message.gd" id="1_win"]
+[ext_resource type="Texture2D" uid="uid://bwr8sla54mt8m" path="res://images/menus/small-bg.png" id="2_u2apl"]
+[ext_resource type="FontFile" uid="uid://dx7o1ndkvc120" path="res://fonts/pixel.ttf" id="3_8w2ho"]
+[ext_resource type="Texture2D" uid="uid://cn5cthvni1pr7" path="res://images/menus/empty-star.png" id="4_bawt2"]
+[ext_resource type="Texture2D" uid="uid://bgv2inp8vr2xu" path="res://images/menus/medium-button.png" id="5_lrdvp"]
+[ext_resource type="Texture2D" uid="uid://cbr2syu08cmfj" path="res://images/menus/star.png" id="5_wusr0"]
+[ext_resource type="Texture2D" uid="uid://b1s2127kd8uxv" path="res://images/menus/medium-button-clicked.png" id="7_wusr0"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1n"]
-bg_color = Color(0, 0, 0, 0.588235)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.388235, 0.8, 0.372549, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bawt2"]
+content_margin_left = 32.0
+content_margin_top = 60.0
+content_margin_right = 32.0
+content_margin_bottom = 60.0
+texture = ExtResource("2_u2apl")
+
+[sub_resource type="FontVariation" id="FontVariation_lrdvp"]
+base_font = ExtResource("3_8w2ho")
+spacing_glyph = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qgui7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wusr0"]
+content_margin_left = 12.0
+content_margin_top = 3.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+texture = ExtResource("5_lrdvp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3an3s"]
+content_margin_left = 12.0
+content_margin_top = 4.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+texture = ExtResource("7_wusr0")
 
 [node name="WinMessage" type="Control"]
 layout_mode = 3
@@ -31,41 +52,130 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="Panel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -100.0
-offset_right = 150.0
-offset_bottom = 100.0
+offset_left = -164.5
+offset_top = -154.0
+offset_right = 164.5
+offset_bottom = 154.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_w1n")
+theme_override_styles/panel = SubResource("StyleBoxTexture_bawt2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Panel2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_lrdvp")
+theme_override_font_sizes/font_size = 50
+text = "You Won!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+[node name="Star1" type="TextureRect" parent="Panel2/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Level Complete!"
-horizontal_alignment = 1
+texture = ExtResource("4_bawt2")
 
-[node name="Button" type="Button" parent="Panel/VBoxContainer"]
-custom_minimum_size = Vector2(120, 40)
+[node name="TextureRect" type="TextureRect" parent="Panel2/PanelContainer/VBoxContainer/HBoxContainer/Star1"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -22.0
+offset_right = 23.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wusr0")
+
+[node name="Star2" type="TextureRect" parent="Panel2/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("4_bawt2")
+
+[node name="TextureRect" type="TextureRect" parent="Panel2/PanelContainer/VBoxContainer/HBoxContainer/Star2"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -22.0
+offset_right = 23.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wusr0")
+
+[node name="Star3" type="TextureRect" parent="Panel2/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("4_bawt2")
+
+[node name="TextureRect" type="TextureRect" parent="Panel2/PanelContainer/VBoxContainer/HBoxContainer/Star3"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -22.0
+offset_right = 23.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wusr0")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel2/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 16
-text = "Back to Levels"
+size_flags_vertical = 10
+theme_override_constants/separation = 10
 
-[connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="levels button" type="Button" parent="Panel2/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_8w2ho")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qgui7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wusr0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3an3s")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wusr0")
+text = "Levels"
+
+[node name="next button" type="Button" parent="Panel2/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_8w2ho")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qgui7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wusr0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3an3s")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wusr0")
+text = "Next"
+
+[connection signal="pressed" from="Panel2/PanelContainer/VBoxContainer/HBoxContainer2/levels button" to="." method="_on_levels_button_pressed"]
+[connection signal="pressed" from="Panel2/PanelContainer/VBoxContainer/HBoxContainer2/next button" to="." method="_on_next_button_pressed"]

@@ -1,0 +1,108 @@
+[gd_scene load_steps=11 format=3 uid="uid://l8u4qynw71c8"]
+
+[ext_resource type="Script" uid="uid://5alll2al5gia" path="res://scripts/pause_game.gd" id="1_1a53a"]
+[ext_resource type="Texture2D" uid="uid://d2uetohpvalf1" path="res://images/menus/small-tall-bg.png" id="1_bom2t"]
+[ext_resource type="FontFile" uid="uid://dx7o1ndkvc120" path="res://fonts/pixel.ttf" id="2_g7tir"]
+[ext_resource type="Texture2D" uid="uid://de2lxwh7l0m68" path="res://images/menus/large-button.png" id="3_1a53a"]
+[ext_resource type="Texture2D" uid="uid://djtk0iopio71w" path="res://images/menus/large-button-clicked.png" id="4_0f7wk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ep6bc"]
+content_margin_left = 32.0
+content_margin_top = 60.0
+content_margin_right = 32.0
+content_margin_bottom = 60.0
+texture = ExtResource("1_bom2t")
+
+[sub_resource type="FontVariation" id="FontVariation_vjvah"]
+base_font = ExtResource("2_g7tir")
+spacing_glyph = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1gbso"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_haysm"]
+content_margin_top = 4.0
+content_margin_bottom = 15.0
+texture = ExtResource("3_1a53a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bweca"]
+content_margin_top = 4.0
+content_margin_bottom = 12.0
+texture = ExtResource("4_0f7wk")
+
+[node name="PauseGame" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1a53a")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -162.0
+offset_right = 126.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ep6bc")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel2/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="resume button" type="Button" parent="Panel2/PanelContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = SubResource("FontVariation_vjvah")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1gbso")
+theme_override_styles/hover = SubResource("StyleBoxTexture_haysm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bweca")
+theme_override_styles/normal = SubResource("StyleBoxTexture_haysm")
+text = "Resume"
+
+[node name="retry button" type="Button" parent="Panel2/PanelContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = SubResource("FontVariation_vjvah")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1gbso")
+theme_override_styles/hover = SubResource("StyleBoxTexture_haysm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bweca")
+theme_override_styles/normal = SubResource("StyleBoxTexture_haysm")
+text = "Retry"
+
+[node name="levels button" type="Button" parent="Panel2/PanelContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = SubResource("FontVariation_vjvah")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1gbso")
+theme_override_styles/hover = SubResource("StyleBoxTexture_haysm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bweca")
+theme_override_styles/normal = SubResource("StyleBoxTexture_haysm")
+text = "Levels"
+
+[connection signal="pressed" from="Panel2/PanelContainer/VBoxContainer2/resume button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Panel2/PanelContainer/VBoxContainer2/retry button" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Panel2/PanelContainer/VBoxContainer2/levels button" to="." method="_on_levels_button_pressed"]

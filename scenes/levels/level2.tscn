@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dtg1wrc7cldnv"]
+[gd_scene load_steps=15 format=3 uid="uid://dtg1wrc7cldnv"]
 
 [ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_xrrf0"]
 [ext_resource type="Texture2D" uid="uid://cpafu0aoasaeo" path="res://images/map-tilemap.png" id="2_kh4a2"]
@@ -9,9 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://b0hdgn37slryw" path="res://images/players/red.png" id="7_8j387"]
 [ext_resource type="Texture2D" uid="uid://crf14muff1dpr" path="res://images/portals/portal-red.png" id="8_5dhap"]
 [ext_resource type="Script" uid="uid://cfbndwix5te3d" path="res://scripts/player_controller.gd" id="9_yblfm"]
-[ext_resource type="PackedScene" uid="uid://1775noeunqyk" path="res://scenes/win_message.tscn" id="10_winmsg"]
 [ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="11_gamemgr"]
-[ext_resource type="Script" uid="uid://bwm2ij4v5y2cl" path="res://scripts/moves_counter.gd" id="12_8i1lk"]
+[ext_resource type="PackedScene" uid="uid://bciumb0r1tc20" path="res://scenes/ui_controls.tscn" id="12_7y3lx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bcwkp"]
 texture = ExtResource("1_xrrf0")
@@ -75,24 +74,8 @@ script = ExtResource("9_yblfm")
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("11_gamemgr")
 
-[node name="WinMessage" parent="." instance=ExtResource("10_winmsg")]
-visible = false
+[node name="UIControls" parent="." instance=ExtResource("12_7y3lx")]
 offset_right = 640.0
 offset_bottom = 360.0
 
-[node name="StoneButton" type="Button" parent="." groups=["stone_button"]]
-offset_left = 510.0
-offset_top = 316.0
-offset_right = 623.0
-offset_bottom = 347.0
-text = "Turn to Stone"
-
-[node name="MovesCounter" type="Label" parent="."]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 90.0
-offset_bottom = 36.0
-text = "Moves: 0"
-script = ExtResource("12_8i1lk")
-
-[connection signal="game_won" from="GameManager" to="WinMessage" method="display_win"]
+[connection signal="game_won" from="GameManager" to="UIControls" method="display_win"]

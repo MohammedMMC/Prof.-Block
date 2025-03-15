@@ -1,0 +1,140 @@
+[gd_scene load_steps=21 format=3 uid="uid://bciumb0r1tc20"]
+
+[ext_resource type="Script" uid="uid://bodxx04w4ld37" path="res://scripts/ui_controls.gd" id="1_2edjh"]
+[ext_resource type="Script" uid="uid://bwm2ij4v5y2cl" path="res://scripts/moves_counter.gd" id="1_wqm4y"]
+[ext_resource type="Texture2D" uid="uid://c2oodgoyub4px" path="res://images/menus/text-bg.png" id="2_of51d"]
+[ext_resource type="FontFile" uid="uid://dx7o1ndkvc120" path="res://fonts/pixel.ttf" id="2_u2c1h"]
+[ext_resource type="Texture2D" uid="uid://de2lxwh7l0m68" path="res://images/menus/large-button.png" id="3_of51d"]
+[ext_resource type="Texture2D" uid="uid://djtk0iopio71w" path="res://images/menus/large-button-clicked.png" id="4_j5g4d"]
+[ext_resource type="Texture2D" uid="uid://djien5ror565c" path="res://images/menus/text-bg-disabled.png" id="4_pem1p"]
+[ext_resource type="PackedScene" uid="uid://1775noeunqyk" path="res://scenes/win_message.tscn" id="7_abefu"]
+[ext_resource type="Texture2D" uid="uid://daavtwfdjc0ue" path="res://images/menus/pause-button.png" id="7_pem1p"]
+[ext_resource type="Texture2D" uid="uid://oo4svq0qvl1u" path="res://images/menus/pause-button-clicked.png" id="8_jcg3s"]
+[ext_resource type="PackedScene" uid="uid://l8u4qynw71c8" path="res://scenes/pause_game.tscn" id="10_3r3yg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j5g4d"]
+content_margin_left = 10.0
+content_margin_top = 6.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
+texture = ExtResource("2_of51d")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6enoi"]
+content_margin_left = 10.0
+content_margin_top = 6.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
+texture = ExtResource("4_pem1p")
+
+[sub_resource type="FontVariation" id="FontVariation_pem1p"]
+base_font = ExtResource("2_u2c1h")
+spacing_glyph = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6enoi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jcg3s"]
+content_margin_top = 4.0
+content_margin_bottom = 12.0
+texture = ExtResource("3_of51d")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3r3yg"]
+content_margin_top = 6.0
+content_margin_bottom = 10.0
+texture = ExtResource("4_j5g4d")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jcg3s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2edjh"]
+texture = ExtResource("7_pem1p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2aym8"]
+texture = ExtResource("8_jcg3s")
+
+[node name="UIControls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_2edjh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 179.0
+offset_bottom = 39.0
+theme_override_constants/separation = 6
+
+[node name="MovesCounter" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_u2c1h")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_j5g4d")
+text = "Moves: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_wqm4y")
+
+[node name="timer" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_u2c1h")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_6enoi")
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="play button" type="Button" parent="." groups=["stone_button"]]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -157.0
+offset_top = -44.0
+offset_right = -6.0
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = SubResource("FontVariation_pem1p")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6enoi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jcg3s")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3r3yg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_jcg3s")
+text = "Turn To Stone"
+
+[node name="PauseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -42.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 42.0
+grow_horizontal = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jcg3s")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2edjh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2aym8")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2edjh")
+
+[node name="WinMessage" parent="." instance=ExtResource("7_abefu")]
+visible = false
+layout_mode = 1
+
+[node name="PauseGame" parent="." instance=ExtResource("10_3r3yg")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

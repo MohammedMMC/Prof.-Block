@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0xrx3i3qdfxp"]
+
+[ext_resource type="Script" path="res://scripts/moves_counter.gd" id="1_lfmqm"]
+
+[node name="MovesCounter" type="Label"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 90.0
+offset_bottom = 36.0
+text = "Moves: 0"
+script = ExtResource("1_lfmqm")

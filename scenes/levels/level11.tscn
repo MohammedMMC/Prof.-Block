@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://clipvgmki0e35"]
+[gd_scene load_steps=18 format=3 uid="uid://clipvgmki0e35"]
 
 [ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_kr3vy"]
 [ext_resource type="Texture2D" uid="uid://cpafu0aoasaeo" path="res://images/map-tilemap.png" id="2_tivk1"]
@@ -13,8 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://crf14muff1dpr" path="res://images/portals/portal-red.png" id="11_rohyx"]
 [ext_resource type="Script" uid="uid://cfbndwix5te3d" path="res://scripts/player_controller.gd" id="12_417m5"]
 [ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="13_d31ew"]
-[ext_resource type="PackedScene" uid="uid://1775noeunqyk" path="res://scenes/win_message.tscn" id="14_7128s"]
-[ext_resource type="Script" uid="uid://bwm2ij4v5y2cl" path="res://scripts/moves_counter.gd" id="15_tivk1"]
+[ext_resource type="PackedScene" uid="uid://bciumb0r1tc20" path="res://scenes/ui_controls.tscn" id="15_y2x5g"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bcwkp"]
 texture = ExtResource("1_kr3vy")
@@ -95,24 +94,8 @@ script = ExtResource("12_417m5")
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("13_d31ew")
 
-[node name="WinMessage" parent="." instance=ExtResource("14_7128s")]
-visible = false
+[node name="UIControls" parent="." instance=ExtResource("15_y2x5g")]
 offset_right = 640.0
 offset_bottom = 360.0
 
-[node name="StoneButton" type="Button" parent="." groups=["stone_button"]]
-offset_left = 511.0
-offset_top = 317.0
-offset_right = 624.0
-offset_bottom = 348.0
-text = "Turn to Stone"
-
-[node name="MovesCounter" type="Label" parent="."]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 90.0
-offset_bottom = 36.0
-text = "Moves: 0"
-script = ExtResource("15_tivk1")
-
-[connection signal="game_won" from="GameManager" to="WinMessage" method="display_win"]
+[connection signal="game_won" from="GameManager" to="UIControls" method="display_win"]
