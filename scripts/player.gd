@@ -33,6 +33,10 @@ func _ready():
 	add_child(timer)
 	timer.start()
 
+func change_texture(new_texture):
+	player_texture = load(new_texture)
+	$Sprite2D.texture = load(new_texture)
+
 func is_path_clear(direction: Vector2) -> bool:
 	var query = PhysicsRayQueryParameters2D.new()
 	query.from = global_position

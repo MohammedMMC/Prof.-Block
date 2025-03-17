@@ -1,23 +1,25 @@
-[gd_scene load_steps=18 format=3 uid="uid://dcbovsx4ks8d3"]
+[gd_scene load_steps=19 format=3 uid="uid://dcbovsx4ks8d3"]
 
 [ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_1se4v"]
 [ext_resource type="Texture2D" uid="uid://cpafu0aoasaeo" path="res://images/map-tilemap.png" id="2_ysxgg"]
-[ext_resource type="PackedScene" uid="uid://bbkd4nvfsijk6" path="res://scenes/player.tscn" id="3_634p2"]
+[ext_resource type="PackedScene" uid="uid://bbkd4nvfsijk6" path="res://scenes/subscenes/player.tscn" id="3_634p2"]
 [ext_resource type="Texture2D" uid="uid://b0hdgn37slryw" path="res://images/players/red.png" id="4_21itu"]
 [ext_resource type="Texture2D" uid="uid://dgljmyn225m7o" path="res://images/players/grey.png" id="5_x1flq"]
 [ext_resource type="Texture2D" uid="uid://c6tc3khx6q4oj" path="res://images/players/blue.png" id="6_w4xpj"]
 [ext_resource type="Texture2D" uid="uid://bqafk13q2uxj4" path="res://images/players/yellow.png" id="7_sa2bg"]
-[ext_resource type="PackedScene" uid="uid://b8jg0cdw6h2ml" path="res://scenes/portal.tscn" id="8_4ji8w"]
+[ext_resource type="PackedScene" uid="uid://b8jg0cdw6h2ml" path="res://scenes/subscenes/portal.tscn" id="8_4ji8w"]
 [ext_resource type="Texture2D" uid="uid://crf14muff1dpr" path="res://images/portals/portal-red.png" id="9_k056o"]
 [ext_resource type="Texture2D" uid="uid://duub8n618rwdb" path="res://images/portals/portal-blue.png" id="10_a0e7p"]
 [ext_resource type="Texture2D" uid="uid://cicoe56ne2bb8" path="res://images/portals/portal-yellow.png" id="11_otn3r"]
 [ext_resource type="Script" uid="uid://cfbndwix5te3d" path="res://scripts/player_controller.gd" id="12_u8rrv"]
 [ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="13_08hg2"]
-[ext_resource type="PackedScene" uid="uid://bciumb0r1tc20" path="res://scenes/ui_controls.tscn" id="15_uf6bo"]
+[ext_resource type="PackedScene" uid="uid://bciumb0r1tc20" path="res://scenes/subscenes/ui_controls.tscn" id="15_uf6bo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bcwkp"]
 texture = ExtResource("1_1se4v")
-modulate_color = Color(0.942823, 0.942823, 0.942823, 1)
+
+[sub_resource type="Theme" id="Theme_1se4v"]
+Panel/styles/panel = SubResource("StyleBoxTexture_bcwkp")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4d7sh"]
 texture = ExtResource("2_ysxgg")
@@ -35,7 +37,7 @@ sources/0 = SubResource("TileSetAtlasSource_4d7sh")
 
 [node name="Node2D3" type="Node2D"]
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Background" type="Panel" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -43,7 +45,7 @@ offset_right = 640.0
 offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_bcwkp")
+theme = SubResource("Theme_1se4v")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(208, 36)

@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8jg0cdw6h2ml"]
+[gd_scene load_steps=6 format=3 uid="uid://dwrgbu370h4ow"]
 
-[ext_resource type="Script" path="res://scripts/portal.gd" id="1_qjol5"]
+[ext_resource type="Script" uid="uid://dgxjgmp7wiff" path="res://scripts/fire.gd" id="1_wlh52"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpjbw"]
 size = Vector2(28, 28)
@@ -43,16 +43,19 @@ _data = {
 &"portal_animation": SubResource("Animation_epypp")
 }
 
-[node name="Portal" type="StaticBody2D"]
-script = ExtResource("1_qjol5")
+[node name="Fire" type="StaticBody2D"]
+script = ExtResource("1_wlh52")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(0.917647, 0.494118, 0.658824, 1)
+self_modulate = Color(0.917647, 0.494118, 0.658824, 1)
 shape = SubResource("RectangleShape2D_fpjbw")
 disabled = true
+debug_color = Color(0.917173, 0.493918, 0.660378, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

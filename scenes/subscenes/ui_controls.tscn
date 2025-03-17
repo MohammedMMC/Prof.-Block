@@ -7,10 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://de2lxwh7l0m68" path="res://images/menus/large-button.png" id="3_of51d"]
 [ext_resource type="Texture2D" uid="uid://djtk0iopio71w" path="res://images/menus/large-button-clicked.png" id="4_j5g4d"]
 [ext_resource type="Texture2D" uid="uid://djien5ror565c" path="res://images/menus/text-bg-disabled.png" id="4_pem1p"]
-[ext_resource type="PackedScene" uid="uid://1775noeunqyk" path="res://scenes/win_message.tscn" id="7_abefu"]
+[ext_resource type="PackedScene" uid="uid://1775noeunqyk" path="res://scenes/subscenes/win_message.tscn" id="7_abefu"]
 [ext_resource type="Texture2D" uid="uid://daavtwfdjc0ue" path="res://images/menus/pause-button.png" id="7_pem1p"]
 [ext_resource type="Texture2D" uid="uid://oo4svq0qvl1u" path="res://images/menus/pause-button-clicked.png" id="8_jcg3s"]
-[ext_resource type="PackedScene" uid="uid://l8u4qynw71c8" path="res://scenes/pause_game.tscn" id="10_3r3yg"]
+[ext_resource type="PackedScene" uid="uid://l8u4qynw71c8" path="res://scenes/subscenes/pause_game.tscn" id="10_3r3yg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j5g4d"]
 content_margin_left = 10.0

@@ -13,6 +13,7 @@ config_version=5
 config/name="Prof. Block"
 run/main_scene="uid://bdqc6dr1g32ji"
 config/features=PackedStringArray("4.4", "Mobile")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [display]

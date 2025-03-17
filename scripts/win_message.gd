@@ -32,6 +32,18 @@ func display_win():
 	elif moves <= (min_moves + 20):
 		golden_star_1.show()
 	
+	var regex = RegEx.new()
+	regex.compile("level(\\d+)\\.tscn$")
+	var result = regex.search(get_tree().get_current_scene().scene_file_path)
+	
+	if result:
+		var next_level = int(result.get_string(1)) + 1
+		var next_level_path = "res://scenes/levels/level%d.tscn" % next_level
+		if not FileAccess.file_exists(next_level_path):
+			next_button.hide()
+	else:
+		next_button.hide()
+	
 	visible = true
 
 func _on_levels_button_pressed() -> void:
@@ -49,9 +61,7 @@ func _on_next_button_pressed() -> void:
 		var next_level = int(result.get_string(1)) + 1
 		var next_level_path = "res://scenes/levels/level%d.tscn" % next_level
 		
-		var file = FileAccess.open(next_level_path, FileAccess.READ)
-		if file:
-			file.close()
+		if FileAccess.file_exists(next_level_path):
 			get_tree().change_scene_to_file(next_level_path)
 		else:
 			next_button.hide()

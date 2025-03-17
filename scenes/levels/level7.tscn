@@ -1,21 +1,23 @@
-[gd_scene load_steps=16 format=3 uid="uid://cshgt5yw2bvtd"]
+[gd_scene load_steps=17 format=3 uid="uid://cshgt5yw2bvtd"]
 
 [ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_v2r1a"]
 [ext_resource type="Texture2D" uid="uid://cpafu0aoasaeo" path="res://images/map-tilemap.png" id="2_1gkwy"]
-[ext_resource type="PackedScene" uid="uid://bbkd4nvfsijk6" path="res://scenes/player.tscn" id="3_rge87"]
+[ext_resource type="PackedScene" uid="uid://bbkd4nvfsijk6" path="res://scenes/subscenes/player.tscn" id="3_rge87"]
 [ext_resource type="Texture2D" uid="uid://bqafk13q2uxj4" path="res://images/players/yellow.png" id="4_1gkwy"]
 [ext_resource type="Texture2D" uid="uid://dgljmyn225m7o" path="res://images/players/grey.png" id="5_l0cwd"]
 [ext_resource type="Texture2D" uid="uid://c6tc3khx6q4oj" path="res://images/players/blue.png" id="5_rge87"]
-[ext_resource type="PackedScene" uid="uid://b8jg0cdw6h2ml" path="res://scenes/portal.tscn" id="6_vnwci"]
+[ext_resource type="PackedScene" uid="uid://b8jg0cdw6h2ml" path="res://scenes/subscenes/portal.tscn" id="6_vnwci"]
 [ext_resource type="Texture2D" uid="uid://duub8n618rwdb" path="res://images/portals/portal-blue.png" id="8_rge87"]
 [ext_resource type="Script" uid="uid://cfbndwix5te3d" path="res://scripts/player_controller.gd" id="8_vd1yw"]
 [ext_resource type="Texture2D" uid="uid://cicoe56ne2bb8" path="res://images/portals/portal-yellow.png" id="9_emhfo"]
 [ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="9_wkjcw"]
-[ext_resource type="PackedScene" uid="uid://bciumb0r1tc20" path="res://scenes/ui_controls.tscn" id="12_wgtbf"]
+[ext_resource type="PackedScene" uid="uid://bciumb0r1tc20" path="res://scenes/subscenes/ui_controls.tscn" id="12_wgtbf"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bcwkp"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rge87"]
 texture = ExtResource("1_v2r1a")
-modulate_color = Color(0.942823, 0.942823, 0.942823, 1)
+
+[sub_resource type="Theme" id="Theme_emhfo"]
+Panel/styles/panel = SubResource("StyleBoxTexture_rge87")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4d7sh"]
 texture = ExtResource("2_1gkwy")
@@ -33,7 +35,7 @@ sources/0 = SubResource("TileSetAtlasSource_4d7sh")
 
 [node name="Node2D3" type="Node2D"]
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Background" type="Panel" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -41,7 +43,7 @@ offset_right = 640.0
 offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_bcwkp")
+theme = SubResource("Theme_emhfo")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(192, 5)

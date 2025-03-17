@@ -1,0 +1,110 @@
+[gd_scene load_steps=21 format=3 uid="uid://cng8haecq0gvn"]
+
+[ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_1o2vf"]
+[ext_resource type="Texture2D" uid="uid://cpafu0aoasaeo" path="res://images/map-tilemap.png" id="2_kcw16"]
+[ext_resource type="PackedScene" uid="uid://bbkd4nvfsijk6" path="res://scenes/subscenes/player.tscn" id="3_74lmc"]
+[ext_resource type="Texture2D" uid="uid://dgljmyn225m7o" path="res://images/players/grey.png" id="4_712qu"]
+[ext_resource type="Texture2D" uid="uid://c6tc3khx6q4oj" path="res://images/players/blue.png" id="5_wm8qe"]
+[ext_resource type="Texture2D" uid="uid://b0hdgn37slryw" path="res://images/players/red.png" id="6_74lmc"]
+[ext_resource type="PackedScene" uid="uid://b8jg0cdw6h2ml" path="res://scenes/subscenes/portal.tscn" id="6_86qe7"]
+[ext_resource type="Texture2D" uid="uid://bqafk13q2uxj4" path="res://images/players/yellow.png" id="7_712qu"]
+[ext_resource type="Texture2D" uid="uid://cicoe56ne2bb8" path="res://images/portals/portal-yellow.png" id="7_srya6"]
+[ext_resource type="PackedScene" uid="uid://dwrgbu370h4ow" path="res://scenes/subscenes/fire.tscn" id="8_lw81o"]
+[ext_resource type="Texture2D" uid="uid://qjvdo4a47tix" path="res://images/fires/fire-yellow.png" id="9_o61ry"]
+[ext_resource type="Texture2D" uid="uid://crf14muff1dpr" path="res://images/portals/portal-red.png" id="9_wm8qe"]
+[ext_resource type="Script" uid="uid://cfbndwix5te3d" path="res://scripts/player_controller.gd" id="10_tel66"]
+[ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="11_0pgk8"]
+[ext_resource type="Texture2D" uid="uid://d3cp00exuvj4" path="res://images/fires/fire-red.png" id="12_86qe7"]
+[ext_resource type="PackedScene" uid="uid://bciumb0r1tc20" path="res://scenes/subscenes/ui_controls.tscn" id="12_wh1q3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2re2y"]
+texture = ExtResource("1_1o2vf")
+
+[sub_resource type="Theme" id="Theme_737d1"]
+Panel/styles/panel = SubResource("StyleBoxTexture_2re2y")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4d7sh"]
+texture = ExtResource("2_kcw16")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/size_in_atlas = Vector2i(2, 2)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_ir8iy"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_4d7sh")
+
+[node name="Node2D3" type="Node2D"]
+
+[node name="Background" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_737d1")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(224, 76)
+tile_set = SubResource("TileSet_ir8iy")
+rendering_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(262152, 0, 0, 131080, 0, 0, 196616, 196608, 0, 8, 0, 0, 65544, 0, 0, -65528, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 196608, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 262151, 0, 0, 327686, 0, 0, 327687, 0, 0, 393222, 0, 0, 393221, 0, 0, 458757, 196608, 0, 65534, 0, 0, 131070, 0, 0, 196606, 0, 0, 262142, 0, 0, 327678, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 393217, 0, 0, 458753, 0, 0, 393216, 0, 0, 393215, 0, 0, 327680, 0, 0, 327679, 0, 0, 131072, 0, 0, 327683, 0, 0)
+
+[node name="player1" parent="." instance=ExtResource("3_74lmc")]
+position = Vector2(304, 124)
+player_texture = ExtResource("4_712qu")
+
+[node name="player4" parent="." instance=ExtResource("3_74lmc")]
+position = Vector2(304, 92)
+player_texture = ExtResource("5_wm8qe")
+
+[node name="player5" parent="." instance=ExtResource("3_74lmc")]
+position = Vector2(336, 92)
+player_texture = ExtResource("6_74lmc")
+
+[node name="player6" parent="." instance=ExtResource("3_74lmc")]
+position = Vector2(368, 92)
+player_texture = ExtResource("7_712qu")
+
+[node name="player2" parent="." instance=ExtResource("3_74lmc")]
+position = Vector2(336, 124)
+player_texture = ExtResource("4_712qu")
+
+[node name="player3" parent="." instance=ExtResource("3_74lmc")]
+position = Vector2(368, 124)
+player_texture = ExtResource("4_712qu")
+
+[node name="portal" parent="." instance=ExtResource("6_86qe7")]
+position = Vector2(368, 220)
+portal_texture = ExtResource("9_wm8qe")
+
+[node name="portal2" parent="." instance=ExtResource("6_86qe7")]
+position = Vector2(304, 220)
+portal_texture = ExtResource("7_srya6")
+
+[node name="Fire" parent="." instance=ExtResource("8_lw81o")]
+position = Vector2(464, 188)
+fire_texture = ExtResource("12_86qe7")
+
+[node name="Fire2" parent="." instance=ExtResource("8_lw81o")]
+position = Vector2(208, 188)
+fire_texture = ExtResource("9_o61ry")
+
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource("10_tel66")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("11_0pgk8")
+min_moves = 4
+
+[node name="UIControls" parent="." instance=ExtResource("12_wh1q3")]
+offset_right = 640.0
+offset_bottom = 360.0
+
+[connection signal="game_won" from="GameManager" to="UIControls" method="display_win"]
