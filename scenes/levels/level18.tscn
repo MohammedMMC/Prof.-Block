@@ -1,0 +1,106 @@
+[gd_scene load_steps=17 format=3 uid="uid://cfybmpnyy767s"]
+
+[ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_571s1"]
+[ext_resource type="Texture2D" uid="uid://cpafu0aoasaeo" path="res://images/map-tilemap.png" id="2_rwa63"]
+[ext_resource type="PackedScene" uid="uid://bbkd4nvfsijk6" path="res://scenes/subscenes/player.tscn" id="3_ytg2b"]
+[ext_resource type="Texture2D" uid="uid://dgljmyn225m7o" path="res://images/players/grey.png" id="4_n2wno"]
+[ext_resource type="Texture2D" uid="uid://b0hdgn37slryw" path="res://images/players/red.png" id="5_e63sy"]
+[ext_resource type="Texture2D" uid="uid://bqafk13q2uxj4" path="res://images/players/yellow.png" id="5_rwa63"]
+[ext_resource type="PackedScene" uid="uid://b8jg0cdw6h2ml" path="res://scenes/subscenes/portal.tscn" id="6_vfuvl"]
+[ext_resource type="Texture2D" uid="uid://cicoe56ne2bb8" path="res://images/portals/portal-yellow.png" id="8_571s1"]
+[ext_resource type="Texture2D" uid="uid://crf14muff1dpr" path="res://images/portals/portal-red.png" id="9_rwa63"]
+[ext_resource type="Script" uid="uid://cfbndwix5te3d" path="res://scripts/player_controller.gd" id="10_q2b4t"]
+[ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="11_mvqw3"]
+[ext_resource type="PackedScene" uid="uid://bciumb0r1tc20" path="res://scenes/subscenes/ui_controls.tscn" id="12_rukma"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2re2y"]
+texture = ExtResource("1_571s1")
+
+[sub_resource type="Theme" id="Theme_737d1"]
+Panel/styles/panel = SubResource("StyleBoxTexture_2re2y")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4d7sh"]
+texture = ExtResource("2_rwa63")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/size_in_atlas = Vector2i(2, 2)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_ir8iy"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_4d7sh")
+
+[node name="Node2D3" type="Node2D"]
+
+[node name="Background" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_737d1")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(224, 76)
+tile_set = SubResource("TileSet_ir8iy")
+rendering_quadrant_size = 62
+format = 2
+layer_0/tile_data = PackedInt32Array(458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458753, 0, 0, 458752, 0, 0, 524287, 0, 0, 524286, 0, 0, 458750, 0, 0, -65530, 0, 0, 458757, 0, 0, 524285, 196608, 0, 458759, 0, 0, 458758, 0, 0, 458749, 0, 0, 393213, 0, 0, 327677, 0, 0, 196605, 0, 0, 262141, 0, 0, -2, 0, 0, -1, 0, 0, 262149, 0, 0, 262148, 0, 0, 262147, 0, 0, 262146, 0, 0, 262145, 0, 0, 262144, 196608, 0, 327679, 0, 0, -65528, 0, 0, 65532, 0, 0, 131068, 0, 0, 458760, 196608, 0, 393224, 0, 0, 327688, 0, 0, 262152, 0, 0, 196616, 0, 0, 131080, 0, 0, 9, 196608, 0, 65545, 0, 0, 393223, 0, 0, 131077, 0, 0, 131076, 0, 0, 131072, 0, 0, 131073, 0, 0, 196606, 0, 0, 196604, 0, 0, 131079, 0, 0, -3, 0, 0, -65529, 0, 0, 6, 0, 0, 5, 0, 0, 4, 0, 0, 3, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 65535, 0, 0, 65533, 0, 0, 8, 0, 0, 131081, 0, 0, 262150, 0, 0)
+
+[node name="player1" parent="." instance=ExtResource("3_ytg2b")]
+position = Vector2(464, 92)
+player_texture = ExtResource("4_n2wno")
+
+[node name="player2" parent="." instance=ExtResource("3_ytg2b")]
+position = Vector2(176, 92)
+player_texture = ExtResource("4_n2wno")
+
+[node name="player5" parent="." instance=ExtResource("3_ytg2b")]
+position = Vector2(176, 124)
+player_texture = ExtResource("5_rwa63")
+
+[node name="player6" parent="." instance=ExtResource("3_ytg2b")]
+position = Vector2(144, 124)
+player_texture = ExtResource("5_e63sy")
+
+[node name="player3" parent="." instance=ExtResource("3_ytg2b")]
+position = Vector2(496, 124)
+player_texture = ExtResource("5_rwa63")
+
+[node name="player4" parent="." instance=ExtResource("3_ytg2b")]
+position = Vector2(464, 124)
+player_texture = ExtResource("5_e63sy")
+
+[node name="portal" parent="." instance=ExtResource("6_vfuvl")]
+position = Vector2(336, 156)
+portal_texture = ExtResource("8_571s1")
+
+[node name="portal2" parent="." instance=ExtResource("6_vfuvl")]
+position = Vector2(304, 156)
+portal_texture = ExtResource("9_rwa63")
+
+[node name="portal3" parent="." instance=ExtResource("6_vfuvl")]
+position = Vector2(400, 252)
+portal_texture = ExtResource("9_rwa63")
+
+[node name="portal4" parent="." instance=ExtResource("6_vfuvl")]
+position = Vector2(240, 252)
+portal_texture = ExtResource("8_571s1")
+
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource("10_q2b4t")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("11_mvqw3")
+min_moves = 43
+
+[node name="UIControls" parent="." instance=ExtResource("12_rukma")]
+offset_right = 640.0
+offset_bottom = 360.0
+
+[connection signal="game_won" from="GameManager" to="UIControls" method="display_win"]

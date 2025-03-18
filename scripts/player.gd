@@ -36,6 +36,8 @@ func _ready():
 func change_texture(new_texture):
 	player_texture = load(new_texture)
 	$Sprite2D.texture = load(new_texture)
+	collision_layer = 3 if player_texture.resource_path.ends_with("grey.png") else 2
+	collision_mask = 3 if player_texture.resource_path.ends_with("grey.png") else 1
 
 func is_path_clear(direction: Vector2) -> bool:
 	var query = PhysicsRayQueryParameters2D.new()

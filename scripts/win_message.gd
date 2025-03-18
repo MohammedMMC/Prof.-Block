@@ -11,25 +11,34 @@ func _ready():
 func display_win():
 	var root = get_tree().get_root()
 	var moves_counter = root.find_child("MovesCounter", true, false)
-	
+
+	var game_timer = root.find_child("timer", true, false)
 	var game_manager = get_tree().get_first_node_in_group("game_manager")
-	var moves = 0
-	var min_moves = 0 
+	var moves: int = 0
+	var time_elapsed: int = 0
+	var min_moves: int = 0
+	var min_time: int = 0
 	
 	if game_manager and game_manager.has_method("get") and "min_moves" in game_manager:
 		min_moves = game_manager.min_moves
+		min_time = game_manager.min_time
+	
+	if game_timer and "time_elapsed" in game_timer:
+		time_elapsed = game_timer.time_elapsed
 	
 	if moves_counter and moves_counter.has_method("get_moves"):
 		moves = moves_counter.get_moves()
 	
-	if moves <= min_moves:
+	var score: float = ((float(moves) / float(min_moves)) + (float(time_elapsed) / float(min_time))) / 2.0
+
+	if score <= 1.0:
 		golden_star_1.show()
 		golden_star_2.show()
 		golden_star_3.show()
-	elif moves <= (min_moves + 10):
+	elif score <= 1.5:
 		golden_star_1.show()
 		golden_star_2.show()
-	elif moves <= (min_moves + 20):
+	elif score <= 2.0:
 		golden_star_1.show()
 	
 	var regex = RegEx.new()

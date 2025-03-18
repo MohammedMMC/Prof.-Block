@@ -5,6 +5,9 @@ signal game_won
 @export var min_moves: int:
 	set(value):
 		min_moves = value
+@export var min_time: int = 30:
+	set(value):
+		min_time = value
 
 func _ready():
 	add_to_group("game_manager")
