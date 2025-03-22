@@ -30,7 +30,7 @@ func display_win():
 	$HBoxContainer/timer.pause()
 
 func _on_pause_button_pressed():
-	get_tree().paused = !get_tree().paused
+	get_tree().set("paused", not get_tree().paused)
 	$PauseGame.visible = get_tree().paused
 	if get_tree().paused:
 		$HBoxContainer/timer.pause()
