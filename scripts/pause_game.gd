@@ -1,9 +1,5 @@
 extends Control
 
-func _input(event):
-	if event.is_action_pressed("ui_cancel") and visible:
-		_on_resume_button_pressed()
-
 func _on_resume_button_pressed() -> void:
 	get_tree().set("paused", false)
 	visible = false
