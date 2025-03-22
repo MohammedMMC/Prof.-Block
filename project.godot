@@ -16,6 +16,11 @@ config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalSettings="*res://scripts/global_settings.gd"
+StartupManager="*res://scripts/startup_manager.gd"
+
 [display]
 
 window/size/viewport_width=640

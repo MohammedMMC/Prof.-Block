@@ -15,9 +15,17 @@ func _ready():
 		ind.hide()
 	if players.size() > 0: select_player(players[0])
 	
-	var stone_button = get_tree().get_first_node_in_group("stone_button")
-	if stone_button:
-		stone_button.pressed.connect(turn_selected_player_to_stone)
+	var ui_stone_button = get_tree().get_first_node_in_group("ui_stone_button")
+	var ui_left_button = get_tree().get_first_node_in_group("ui_left_button")
+	var ui_right_button = get_tree().get_first_node_in_group("ui_right_button")
+
+	if ui_stone_button: ui_stone_button.pressed.connect(turn_selected_player_to_stone)
+	if ui_left_button: 
+		ui_left_button.button_down.connect(func(): Input.action_press("ui_left"))
+		ui_left_button.button_up.connect(func(): Input.action_release("ui_left"))
+	if ui_right_button: 
+		ui_right_button.button_down.connect(func(): Input.action_press("ui_right"))
+		ui_right_button.button_up.connect(func(): Input.action_release("ui_right"))
 
 func create_selection_indicator() -> Node2D:
 	var ind = Node2D.new()
