@@ -44,15 +44,17 @@ func display_win():
 	var regex = RegEx.new()
 	regex.compile("level(\\d+)\\.tscn$")
 	var result = regex.search(get_tree().get_current_scene().scene_file_path)
-	
+	var current_level = int(result.get_string(1))
+
 	if result:
-		var next_level = int(result.get_string(1)) + 1
+		var next_level = current_level + 1
 		var next_level_path = "res://scenes/levels/level%d.tscn" % next_level
-		if not FileAccess.file_exists(next_level_path):
+		if not ResourceLoader.exists(next_level_path):
 			next_button.hide()
 	else:
 		next_button.hide()
 	
+	GameState.complete_level(current_level, 3 if score <= 1.0 else 2 if score <= 1.5 else 1)
 	visible = true
 
 func _on_levels_button_pressed() -> void:
@@ -70,7 +72,7 @@ func _on_next_button_pressed() -> void:
 		var next_level = int(result.get_string(1)) + 1
 		var next_level_path = "res://scenes/levels/level%d.tscn" % next_level
 		
-		if FileAccess.file_exists(next_level_path):
+		if ResourceLoader.exists(next_level_path):
 			get_tree().change_scene_to_file(next_level_path)
 		else:
 			next_button.hide()

@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 GlobalSettings="*res://scripts/global_settings.gd"
 StartupManager="*res://scripts/startup_manager.gd"
 InputManager="*res://scripts/input_manager.gd"
+GameState="*res://scripts/game_state.gd"
 
 [display]
 

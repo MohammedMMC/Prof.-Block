@@ -4,7 +4,13 @@ const SETTINGS_FILE = "user://settings.dat"
 var game_data = {}
 
 func _ready():
-	load_data()
+	if OS.get_name() in ["Android", "iOS"]:
+		game_data = {
+			"fullscreen": true,
+			"touchbuttons": true
+		}
+	else:
+		load_data()
 
 func load_data():
 	var default_settings = {
