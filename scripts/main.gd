@@ -3,7 +3,7 @@ extends Control
 func _ready() -> void:
 	var timer = Timer.new()
 	timer.timeout.connect(func(): _roll_sprite($RollingSprite))
-	timer.wait_time = 60.0
+	timer.wait_time = 30.0
 	timer.autostart = true
 	add_child(timer)
 
