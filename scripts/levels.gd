@@ -104,6 +104,8 @@ func update_visible_levels():
 		next_button.mouse_default_cursor_shape = Control.CURSOR_ARROW if is_last_page else Control.CURSOR_POINTING_HAND
 
 func _on_back_button_pressed():
+	TransitionScenes.start()
+	await TransitionScenes.transition_scene_finished
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 func _on_back_levels_button_pressed():
@@ -117,6 +119,8 @@ func _on_next_levels_button_pressed():
 		update_visible_levels()
 
 func _on_level_button_pressed(level_number):
+	TransitionScenes.start()
+	await TransitionScenes.transition_scene_finished
 	get_tree().change_scene_to_file("res://scenes/levels/level%d.tscn" % level_number)
 
 func get_file_count(path: String) -> int:

@@ -132,6 +132,10 @@ func _physics_process(_delta):
 				var moves_counter = root.find_child("MovesCounter", true, false)
 				if moves_counter and moves_counter.has_method("increment"):
 					moves_counter.increment()
+				
+				var audio_manager = get_node_or_null("/root/AudioManager")
+				if audio_manager and audio_manager.has_method("play_move_sound"):
+					audio_manager.play_move_sound()
 			
 			if falling:
 				falling = false

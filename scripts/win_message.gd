@@ -58,6 +58,8 @@ func display_win():
 	visible = true
 
 func _on_levels_button_pressed() -> void:
+	TransitionScenes.start()
+	await TransitionScenes.transition_scene_finished
 	get_tree().change_scene_to_file("res://scenes/levels.tscn")
 
 
@@ -73,6 +75,8 @@ func _on_next_button_pressed() -> void:
 		var next_level_path = "res://scenes/levels/level%d.tscn" % next_level
 		
 		if ResourceLoader.exists(next_level_path):
+			TransitionScenes.start()
+			await TransitionScenes.transition_scene_finished
 			get_tree().change_scene_to_file(next_level_path)
 		else:
 			next_button.hide()

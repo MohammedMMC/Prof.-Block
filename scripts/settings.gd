@@ -21,4 +21,6 @@ func _on_touchbuttons_checkbox_toggled(toggled_on: bool) -> void:
 	GlobalSettings.save_data()
 
 func _on_back_button_pressed() -> void:
+	TransitionScenes.start()
+	await TransitionScenes.transition_scene_finished
 	get_tree().change_scene_to_file("res://scenes/main.tscn")

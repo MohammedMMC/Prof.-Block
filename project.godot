@@ -13,15 +13,17 @@ config_version=5
 config/name="Prof. Block"
 run/main_scene="uid://bdqc6dr1g32ji"
 config/features=PackedStringArray("4.4", "Mobile")
-boot_splash/show_image=false
 config/icon="res://icon.svg"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
 GlobalSettings="*res://scripts/global_settings.gd"
 StartupManager="*res://scripts/startup_manager.gd"
+AudioManager="*res://scripts/audio_manager.gd"
 InputManager="*res://scripts/input_manager.gd"
 GameState="*res://scripts/game_state.gd"
+TransitionScenes="*res://scenes/subscenes/transition_scenes.tscn"
 
 [display]
 
