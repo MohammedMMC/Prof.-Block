@@ -6,7 +6,8 @@ var sfx_player: AudioStreamPlayer
 func _ready():
 	music_player = AudioStreamPlayer.new()
 	var music_stream = load("res://audio/bg.wav") 
-
+	
+	music_stream.loop = true
 	music_player.stream = music_stream
 	music_player.volume_db = -2
 	music_player.bus = "Music" 

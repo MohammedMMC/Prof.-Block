@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bdqc6dr1g32ji"]
+[gd_scene load_steps=14 format=3 uid="uid://bdqc6dr1g32ji"]
 
 [ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://co34qjx507w82" path="res://scripts/main.gd" id="1_h2yge"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c8eirhgujovv2" path="res://images/menus/medium-tall-bg.png" id="4_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://de2lxwh7l0m68" path="res://images/menus/large-button.png" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://djtk0iopio71w" path="res://images/menus/large-button-clicked.png" id="5_tefeu"]
+[ext_resource type="Texture2D" uid="uid://c6tc3khx6q4oj" path="res://images/players/blue.png" id="7_o6xl0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h2yge"]
 texture = ExtResource("1_0xm2m")
@@ -131,6 +132,11 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_tefeu")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_o6xl0")
 theme_override_styles/normal = SubResource("StyleBoxTexture_tefeu")
 text = "Quit"
+
+[node name="RollingSprite" type="Sprite2D" parent="."]
+position = Vector2(-25, 336)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("7_o6xl0")
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/play button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/settings button" to="." method="_on_settings_button_pressed"]
