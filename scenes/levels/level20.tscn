@@ -1,0 +1,101 @@
+[gd_scene load_steps=22 format=3 uid="uid://dgdi1chdr58g6"]
+
+[ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_6g3lg"]
+[ext_resource type="Texture2D" uid="uid://cpafu0aoasaeo" path="res://images/map-tilemap.png" id="2_ajyx4"]
+[ext_resource type="PackedScene" uid="uid://dv1p6wry751j8" path="res://scenes/subscenes/teleport.tscn" id="2_oxo2h"]
+[ext_resource type="Texture2D" uid="uid://dl0651xwfa5uv" path="res://images/teleport/teleport-blue.png" id="3_6g3lg"]
+[ext_resource type="PackedScene" uid="uid://bbkd4nvfsijk6" path="res://scenes/subscenes/player.tscn" id="3_8cydo"]
+[ext_resource type="PackedScene" uid="uid://bpl80bd37mcyh" path="res://scenes/subscenes/port.tscn" id="3_ssmu8"]
+[ext_resource type="Texture2D" uid="uid://dgljmyn225m7o" path="res://images/players/grey.png" id="4_efb25"]
+[ext_resource type="Texture2D" uid="uid://b0hdgn37slryw" path="res://images/players/red.png" id="5_4t8jk"]
+[ext_resource type="Texture2D" uid="uid://fvua0eio6i3w" path="res://images/teleport/port-blue.png" id="5_ajyx4"]
+[ext_resource type="PackedScene" uid="uid://b8jg0cdw6h2ml" path="res://scenes/subscenes/portal.tscn" id="7_jhw77"]
+[ext_resource type="Texture2D" uid="uid://crf14muff1dpr" path="res://images/portals/portal-red.png" id="9_rak3t"]
+[ext_resource type="Texture2D" uid="uid://duub8n618rwdb" path="res://images/portals/portal-blue.png" id="10_klgkm"]
+[ext_resource type="PackedScene" uid="uid://dwrgbu370h4ow" path="res://scenes/subscenes/fire.tscn" id="11_b8jf0"]
+[ext_resource type="Texture2D" uid="uid://c1kwpjyuod64f" path="res://images/fires/fire-blue.png" id="14_bhny3"]
+[ext_resource type="Script" uid="uid://cfbndwix5te3d" path="res://scripts/player_controller.gd" id="15_2re6m"]
+[ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="16_cgvlp"]
+[ext_resource type="PackedScene" uid="uid://bciumb0r1tc20" path="res://scenes/subscenes/ui_controls.tscn" id="17_g4y67"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2re2y"]
+texture = ExtResource("1_6g3lg")
+
+[sub_resource type="Theme" id="Theme_737d1"]
+Panel/styles/panel = SubResource("StyleBoxTexture_2re2y")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4d7sh"]
+texture = ExtResource("2_ajyx4")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/size_in_atlas = Vector2i(2, 2)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_ir8iy"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_4d7sh")
+
+[node name="Node2D3" type="Node2D"]
+
+[node name="Background" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_737d1")
+
+[node name="Teleport" parent="." instance=ExtResource("2_oxo2h")]
+position = Vector2(240, 252)
+teleport_texture = ExtResource("3_6g3lg")
+port_id = 1
+
+[node name="Port" parent="." instance=ExtResource("3_ssmu8")]
+position = Vector2(464, 220)
+port_texture = ExtResource("5_ajyx4")
+port_id = 1
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(224, 76)
+tile_set = SubResource("TileSet_ir8iy")
+rendering_quadrant_size = 62
+format = 2
+layer_0/tile_data = PackedInt32Array(327682, 0, 0, 327683, 0, 0, 65538, 0, 0, 65539, 0, 0, 458748, 0, 0, 393212, 0, 0, 327676, 0, 0, 262140, 0, 0, 196604, 0, 0, 131068, 0, 0, 65532, 0, 0, 9, 0, 0, 65545, 0, 0, 131081, 0, 0, 196617, 0, 0, 262153, 0, 0, 327689, 0, 0, 393225, 0, 0, 393219, 0, 0, 393218, 0, 0, 262147, 0, 0, 262146, 0, 0, 196610, 0, 0, 196611, 0, 0, 131075, 0, 0, 131074, 0, 0, 2, 0, 0, 3, 0, 0, 393224, 0, 0, 393223, 0, 0, 393222, 0, 0, 393221, 0, 0, 393220, 0, 0, 393217, 0, 0, 393216, 0, 0, 458751, 0, 0, 458750, 0, 0, 458749, 0, 0, 8, 0, 0, 7, 0, 0, 6, 0, 0, 5, 0, 0, 4, 0, 0, 1, 0, 0, 0, 0, 0, 65535, 0, 0, 65534, 0, 0, 65533, 0, 0)
+
+[node name="player1" parent="." instance=ExtResource("3_8cydo")]
+position = Vector2(176, 252)
+player_texture = ExtResource("5_4t8jk")
+
+[node name="player2" parent="." instance=ExtResource("3_8cydo")]
+position = Vector2(496, 252)
+player_texture = ExtResource("4_efb25")
+
+[node name="portal" parent="." instance=ExtResource("7_jhw77")]
+position = Vector2(464, 252)
+portal_texture = ExtResource("9_rak3t")
+
+[node name="portal2" parent="." instance=ExtResource("7_jhw77")]
+position = Vector2(369, 252)
+portal_texture = ExtResource("10_klgkm")
+
+[node name="Fire" parent="." instance=ExtResource("11_b8jf0")]
+position = Vector2(400, 252)
+fire_texture = ExtResource("14_bhny3")
+
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource("15_2re6m")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("16_cgvlp")
+min_moves = 31
+
+[node name="UIControls" parent="." instance=ExtResource("17_g4y67")]
+offset_right = 640.0
+offset_bottom = 360.0
+
+[connection signal="game_won" from="GameManager" to="UIControls" method="display_win"]

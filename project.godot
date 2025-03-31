@@ -15,6 +15,9 @@ run/main_scene="uid://bdqc6dr1g32ji"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 config/windows_native_icon="res://icon.ico"
+run/image="uid://blh1jp4en3snj"
+run/minimum_display_time=100
+run/bg_color=Color(0.201851, 0.582931, 0.498309, 1)
 
 [autoload]
 
