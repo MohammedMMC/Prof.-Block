@@ -42,7 +42,8 @@ func teleport_player(player):
 	# player.get_node("Sprite2D").rotation = 0
 	player.global_position = target_port.global_position
 	player.global_transform.origin = target_port.global_position
-	player.call_deferred("set_movement_enabled", true)
+	player.set_movement_enabled(true)
+	player.can_move = true
 	
 	target_port.queue_free()
 	queue_free()

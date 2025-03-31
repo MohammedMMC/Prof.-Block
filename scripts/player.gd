@@ -139,7 +139,7 @@ func _physics_process(_delta):
 			
 			if falling:
 				falling = false
-				can_move = !call_deferred("fall_down") and has_floor_below()
+				can_move = not call_deferred("fall_down") and has_floor_below()
 			else:
 				can_move = true
 				sprite.rotation = fmod(initial_rotation + (PI / 2 * (1 if move_direction.x >= 0 else -1)), 2 * PI)
