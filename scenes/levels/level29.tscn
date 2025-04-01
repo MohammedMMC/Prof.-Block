@@ -1,0 +1,121 @@
+[gd_scene load_steps=23 format=3 uid="uid://cg04btbtkaivt"]
+
+[ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_fcurg"]
+[ext_resource type="PackedScene" uid="uid://dv1p6wry751j8" path="res://scenes/subscenes/teleport.tscn" id="2_gfe80"]
+[ext_resource type="Texture2D" uid="uid://dl0651xwfa5uv" path="res://images/teleport/teleport-blue.png" id="3_yyb3o"]
+[ext_resource type="PackedScene" uid="uid://bpl80bd37mcyh" path="res://scenes/subscenes/port.tscn" id="4_keoem"]
+[ext_resource type="Texture2D" uid="uid://fvua0eio6i3w" path="res://images/teleport/port-blue.png" id="5_i3m65"]
+[ext_resource type="Texture2D" uid="uid://cpafu0aoasaeo" path="res://images/map-tilemap.png" id="6_mc0bj"]
+[ext_resource type="PackedScene" uid="uid://bbkd4nvfsijk6" path="res://scenes/subscenes/player.tscn" id="7_ts1cp"]
+[ext_resource type="Texture2D" uid="uid://bqafk13q2uxj4" path="res://images/players/yellow.png" id="8_py856"]
+[ext_resource type="Texture2D" uid="uid://b0hdgn37slryw" path="res://images/players/red.png" id="9_q4b3k"]
+[ext_resource type="Texture2D" uid="uid://dgljmyn225m7o" path="res://images/players/grey.png" id="10_i4x0x"]
+[ext_resource type="PackedScene" uid="uid://b8jg0cdw6h2ml" path="res://scenes/subscenes/portal.tscn" id="11_3p03e"]
+[ext_resource type="Texture2D" uid="uid://cicoe56ne2bb8" path="res://images/portals/portal-yellow.png" id="13_rlnvo"]
+[ext_resource type="Texture2D" uid="uid://crf14muff1dpr" path="res://images/portals/portal-red.png" id="14_tokkt"]
+[ext_resource type="PackedScene" uid="uid://dwrgbu370h4ow" path="res://scenes/subscenes/fire.tscn" id="15_k2vt2"]
+[ext_resource type="Texture2D" uid="uid://qjvdo4a47tix" path="res://images/fires/fire-yellow.png" id="16_fcurg"]
+[ext_resource type="Script" uid="uid://cfbndwix5te3d" path="res://scripts/player_controller.gd" id="17_0eh6h"]
+[ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="18_ydtq2"]
+[ext_resource type="PackedScene" uid="uid://bciumb0r1tc20" path="res://scenes/subscenes/ui_controls.tscn" id="19_ff0vv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2re2y"]
+texture = ExtResource("1_fcurg")
+
+[sub_resource type="Theme" id="Theme_737d1"]
+Panel/styles/panel = SubResource("StyleBoxTexture_2re2y")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4d7sh"]
+texture = ExtResource("6_mc0bj")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/size_in_atlas = Vector2i(2, 2)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_ir8iy"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_4d7sh")
+
+[node name="Node2D3" type="Node2D"]
+
+[node name="Background" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_737d1")
+
+[node name="Teleport" parent="." instance=ExtResource("2_gfe80")]
+position = Vector2(448, 212)
+teleport_texture = ExtResource("3_yyb3o")
+port_id = 1
+
+[node name="Teleport2" parent="." instance=ExtResource("2_gfe80")]
+position = Vector2(384, 180)
+teleport_texture = ExtResource("3_yyb3o")
+port_id = 2
+
+[node name="Port" parent="." instance=ExtResource("4_keoem")]
+position = Vector2(288, 180)
+port_texture = ExtResource("5_i3m65")
+port_id = 1
+
+[node name="Port2" parent="." instance=ExtResource("4_keoem")]
+position = Vector2(192, 84)
+port_texture = ExtResource("5_i3m65")
+port_id = 2
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(240, 36)
+tile_set = SubResource("TileSet_ir8iy")
+rendering_quadrant_size = 62
+format = 2
+layer_0/tile_data = PackedInt32Array(393218, 0, 0, 65534, 0, 0, 65535, 196608, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 458758, 0, 0, 262140, 0, 0, 327676, 196608, 0, 393212, 0, 0, 458748, 0, 0, 65533, 0, 0, 262152, 0, 0, 327688, 0, 0, 393224, 196608, 0, 7, 0, 0, 196616, 0, 0, 524288, 196608, 0, 524289, 0, 0, 524290, 196608, 0, 524292, 196608, 0, 524284, 0, 0, 524286, 0, 0, 524287, 0, 0, 458752, 0, 0, 458754, 0, 0, 327682, 0, 0, 262146, 0, 0, 65538, 0, 0, 131074, 0, 0, 196610, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 262142, 0, 0, 262143, 0, 0, 196608, 0, 0, 196604, 0, 0, 131068, 0, 0, 131069, 0, 0, 65544, 0, 0, 131080, 0, 0, 524291, 0, 0, 458756, 0, 0, 458757, 0, 0, 458760, 0, 0, 393213, 0, 0, 65543, 196608, 0, 524285, 0, 0, 458759, 0, 0, 327684, 0, 0, 393222, 0, 0, 196614, 0, 0, 196612, 0, 0)
+
+[node name="player1" parent="." instance=ExtResource("7_ts1cp")]
+position = Vector2(384, 116)
+player_texture = ExtResource("9_q4b3k")
+
+[node name="player2" parent="." instance=ExtResource("7_ts1cp")]
+position = Vector2(448, 116)
+player_texture = ExtResource("8_py856")
+
+[node name="player4" parent="." instance=ExtResource("7_ts1cp")]
+position = Vector2(224, 116)
+player_texture = ExtResource("9_q4b3k")
+
+[node name="player3" parent="." instance=ExtResource("7_ts1cp")]
+position = Vector2(384, 84)
+player_texture = ExtResource("10_i4x0x")
+
+[node name="portal" parent="." instance=ExtResource("11_3p03e")]
+position = Vector2(160, 244)
+portal_texture = ExtResource("14_tokkt")
+
+[node name="portal2" parent="." instance=ExtResource("11_3p03e")]
+position = Vector2(256, 244)
+portal_texture = ExtResource("13_rlnvo")
+
+[node name="Fire" parent="." instance=ExtResource("15_k2vt2")]
+position = Vector2(224, 244)
+fire_texture = ExtResource("16_fcurg")
+
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource("17_0eh6h")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("18_ydtq2")
+min_moves = 13
+min_time = 60
+
+[node name="UIControls" parent="." instance=ExtResource("19_ff0vv")]
+offset_right = 640.0
+offset_bottom = 360.0
+
+[connection signal="game_won" from="GameManager" to="UIControls" method="display_win"]
