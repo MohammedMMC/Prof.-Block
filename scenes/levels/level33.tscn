@@ -152,7 +152,7 @@ script = ExtResource("22_nfo8f")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("23_tvng3")
-min_moves = 22
+min_moves = 37
 min_time = 120
 
 [node name="UIControls" parent="." instance=ExtResource("24_8dlp8")]

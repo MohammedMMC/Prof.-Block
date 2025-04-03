@@ -1,0 +1,179 @@
+[gd_scene load_steps=27 format=3 uid="uid://c1dcqxc17v5yr"]
+
+[ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_j77q7"]
+[ext_resource type="PackedScene" uid="uid://dv1p6wry751j8" path="res://scenes/subscenes/teleport.tscn" id="2_cfsmr"]
+[ext_resource type="Texture2D" uid="uid://dl0651xwfa5uv" path="res://images/teleport/teleport-blue.png" id="3_f73va"]
+[ext_resource type="Texture2D" uid="uid://dwhhmyfxarefs" path="res://images/teleport/teleport-green.png" id="4_pvr6y"]
+[ext_resource type="Texture2D" uid="uid://dcfluxy7gia4d" path="res://images/teleport/teleport-red.png" id="5_6ui6t"]
+[ext_resource type="Texture2D" uid="uid://skcec8gynknw" path="res://images/teleport/teleport-purple.png" id="6_vqqfc"]
+[ext_resource type="PackedScene" uid="uid://bpl80bd37mcyh" path="res://scenes/subscenes/port.tscn" id="7_6twk2"]
+[ext_resource type="Texture2D" uid="uid://fvua0eio6i3w" path="res://images/teleport/port-blue.png" id="8_akvkp"]
+[ext_resource type="Texture2D" uid="uid://b1uvgxkucten1" path="res://images/teleport/port-green.png" id="9_ysfc2"]
+[ext_resource type="Texture2D" uid="uid://brxm6qhad1jel" path="res://images/teleport/port-red.png" id="10_bxoph"]
+[ext_resource type="Texture2D" uid="uid://bpnovce7xhal4" path="res://images/teleport/port-purple.png" id="11_uqu23"]
+[ext_resource type="Texture2D" uid="uid://cpafu0aoasaeo" path="res://images/map-tilemap.png" id="12_8slv0"]
+[ext_resource type="PackedScene" uid="uid://bbkd4nvfsijk6" path="res://scenes/subscenes/player.tscn" id="13_juq70"]
+[ext_resource type="Texture2D" uid="uid://bqafk13q2uxj4" path="res://images/players/yellow.png" id="14_jspse"]
+[ext_resource type="Texture2D" uid="uid://dgljmyn225m7o" path="res://images/players/grey.png" id="15_cheto"]
+[ext_resource type="Texture2D" uid="uid://b0hdgn37slryw" path="res://images/players/red.png" id="16_psc1k"]
+[ext_resource type="PackedScene" uid="uid://b8jg0cdw6h2ml" path="res://scenes/subscenes/portal.tscn" id="17_kdkn8"]
+[ext_resource type="Texture2D" uid="uid://cicoe56ne2bb8" path="res://images/portals/portal-yellow.png" id="19_rfeui"]
+[ext_resource type="Texture2D" uid="uid://crf14muff1dpr" path="res://images/portals/portal-red.png" id="20_7vlux"]
+[ext_resource type="Script" uid="uid://cfbndwix5te3d" path="res://scripts/player_controller.gd" id="23_poych"]
+[ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="24_43yj2"]
+[ext_resource type="PackedScene" uid="uid://bciumb0r1tc20" path="res://scenes/subscenes/ui_controls.tscn" id="25_7fgq4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2re2y"]
+texture = ExtResource("1_j77q7")
+
+[sub_resource type="Theme" id="Theme_737d1"]
+Panel/styles/panel = SubResource("StyleBoxTexture_2re2y")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4d7sh"]
+texture = ExtResource("12_8slv0")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/size_in_atlas = Vector2i(2, 2)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_ir8iy"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_4d7sh")
+
+[node name="Node2D3" type="Node2D"]
+
+[node name="Background" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_737d1")
+
+[node name="Teleport" parent="." instance=ExtResource("2_cfsmr")]
+position = Vector2(112, 196)
+teleport_texture = ExtResource("5_6ui6t")
+port_id = 1
+
+[node name="Teleport2" parent="." instance=ExtResource("2_cfsmr")]
+position = Vector2(208, 292)
+teleport_texture = ExtResource("3_f73va")
+port_id = 2
+
+[node name="Teleport3" parent="." instance=ExtResource("2_cfsmr")]
+position = Vector2(272, 292)
+teleport_texture = ExtResource("5_6ui6t")
+port_id = 3
+
+[node name="Teleport4" parent="." instance=ExtResource("2_cfsmr")]
+position = Vector2(368, 292)
+teleport_texture = ExtResource("6_vqqfc")
+port_id = 4
+
+[node name="Teleport5" parent="." instance=ExtResource("2_cfsmr")]
+position = Vector2(496, 260)
+teleport_texture = ExtResource("3_f73va")
+port_id = 5
+
+[node name="Teleport6" parent="." instance=ExtResource("2_cfsmr")]
+position = Vector2(496, 164)
+teleport_texture = ExtResource("6_vqqfc")
+port_id = 6
+
+[node name="Teleport7" parent="." instance=ExtResource("2_cfsmr")]
+position = Vector2(400, 132)
+teleport_texture = ExtResource("4_pvr6y")
+port_id = 7
+
+[node name="Port" parent="." instance=ExtResource("7_6twk2")]
+position = Vector2(464, 228)
+port_texture = ExtResource("10_bxoph")
+port_id = 1
+
+[node name="Port2" parent="." instance=ExtResource("7_6twk2")]
+position = Vector2(400, 228)
+port_texture = ExtResource("8_akvkp")
+port_id = 2
+
+[node name="Port3" parent="." instance=ExtResource("7_6twk2")]
+position = Vector2(464, 68)
+port_texture = ExtResource("10_bxoph")
+port_id = 3
+
+[node name="Port4" parent="." instance=ExtResource("7_6twk2")]
+position = Vector2(304, 68)
+port_texture = ExtResource("11_uqu23")
+port_id = 4
+
+[node name="Port5" parent="." instance=ExtResource("7_6twk2")]
+position = Vector2(336, 228)
+port_texture = ExtResource("8_akvkp")
+port_id = 5
+
+[node name="Port6" parent="." instance=ExtResource("7_6twk2")]
+position = Vector2(240, 228)
+port_texture = ExtResource("11_uqu23")
+port_id = 6
+
+[node name="Port7" parent="." instance=ExtResource("7_6twk2")]
+position = Vector2(272, 68)
+port_texture = ExtResource("9_ysfc2")
+port_id = 7
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(192, 84)
+tile_set = SubResource("TileSet_ir8iy")
+rendering_quadrant_size = 62
+format = 2
+layer_0/tile_data = PackedInt32Array(458754, 0, 0, 458753, 196608, 0, 458752, 0, 0, 458758, 0, 0, 458757, 0, 0, 458756, 0, 0, 458755, 0, 0, 327676, 196608, 0, 262140, 0, 0, 196604, 0, 0, 458749, 0, 0, 458750, 0, 0, 327690, 196608, 0, 393225, 0, 0, 131068, 0, 0, 65532, 0, 0, 524287, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 196608, 0, -131065, 0, 0, -131064, 0, 0, -4, 0, 0, -3, 0, 0, 196614, 0, 0, -2, 0, 0, 65544, 0, 0, 65545, 0, 0, 393226, 0, 0, 458762, 0, 0, 458761, 0, 0, 458760, 0, 0, 458759, 0, 0, 262154, 0, 0, 196618, 0, 0, 131082, 0, 0, 65546, 0, 0, 10, 0, 0, -65526, 0, 0, -131062, 0, 0, -131063, 0, 0, 196617, 0, 0, 196616, 0, 0, 196615, 0, 0, 196613, 0, 0, 131078, 0, 0, 131077, 0, 0, 65541, 0, 0, 5, 0, 0, -65531, 0, 0, -65532, 0, 0, 4, 196608, 0, -65535, 0, 0, 1, 0, 0, 65536, 0, 0, 65535, 0, 0, -1, 0, 0, -65536, 0, 0, 0, 0, 0, 65537, 196608, 0, 196605, 0, 0, 327677, 0, 0, 393213, 0, 0, 458751, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 393220, 0, 0, 262149, 0, 0, 327685, 0, 0, 393219, 196608, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0)
+
+[node name="player1" parent="." instance=ExtResource("13_juq70")]
+position = Vector2(464, 100)
+player_texture = ExtResource("14_jspse")
+
+[node name="player2" parent="." instance=ExtResource("13_juq70")]
+position = Vector2(112, 132)
+player_texture = ExtResource("15_cheto")
+
+[node name="player3" parent="." instance=ExtResource("13_juq70")]
+position = Vector2(112, 100)
+player_texture = ExtResource("16_psc1k")
+
+[node name="player4" parent="." instance=ExtResource("13_juq70")]
+position = Vector2(208, 164)
+player_texture = ExtResource("16_psc1k")
+
+[node name="player5" parent="." instance=ExtResource("13_juq70")]
+position = Vector2(240, 164)
+player_texture = ExtResource("16_psc1k")
+
+[node name="player6" parent="." instance=ExtResource("13_juq70")]
+position = Vector2(176, 260)
+player_texture = ExtResource("15_cheto")
+
+[node name="portal" parent="." instance=ExtResource("17_kdkn8")]
+position = Vector2(304, 196)
+portal_texture = ExtResource("19_rfeui")
+
+[node name="portal2" parent="." instance=ExtResource("17_kdkn8")]
+position = Vector2(336, 164)
+portal_texture = ExtResource("20_7vlux")
+
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource("23_poych")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("24_43yj2")
+min_moves = 30
+min_time = 120
+
+[node name="UIControls" parent="." instance=ExtResource("25_7fgq4")]
+offset_right = 640.0
+offset_bottom = 360.0
+
+[connection signal="game_won" from="GameManager" to="UIControls" method="display_win"]
