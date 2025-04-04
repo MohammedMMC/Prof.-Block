@@ -1,0 +1,458 @@
+[gd_scene load_steps=25 format=3 uid="uid://b7jece1pqdnoj"]
+
+[ext_resource type="Texture2D" uid="uid://btd0lo3e5cevb" path="res://images/menus/medium-bg.png" id="1_e0ddd"]
+[ext_resource type="Script" uid="uid://bwhl27y482twy" path="res://scripts/helpers.gd" id="1_u43ft"]
+[ext_resource type="Texture2D" uid="uid://6hp1qxxoq012" path="res://images/menus/x-button.png" id="2_3sof6"]
+[ext_resource type="Texture2D" uid="uid://b0hdgn37slryw" path="res://images/players/red.png" id="2_opo6h"]
+[ext_resource type="Texture2D" uid="uid://dpxnycn16m5go" path="res://images/menus/stone-block.png" id="3_daejo"]
+[ext_resource type="Texture2D" uid="uid://crf14muff1dpr" path="res://images/portals/portal-red.png" id="4_favxh"]
+[ext_resource type="Texture2D" uid="uid://b22ojm2b6q0w1" path="res://images/menus/line.png" id="5_1hpc6"]
+[ext_resource type="Texture2D" uid="uid://d3ykimx42g0ld" path="res://images/menus/dot.png" id="6_cj67l"]
+[ext_resource type="Texture2D" uid="uid://bn063f5bcy13k" path="res://images/menus/arrow-with-line.png" id="7_i8fo3"]
+[ext_resource type="FontFile" uid="uid://dx7o1ndkvc120" path="res://fonts/pixel.ttf" id="8_1hpc6"]
+[ext_resource type="Texture2D" uid="uid://de2lxwh7l0m68" path="res://images/menus/large-button.png" id="9_cj67l"]
+[ext_resource type="Texture2D" uid="uid://c6tc3khx6q4oj" path="res://images/players/blue.png" id="11_i8fo3"]
+[ext_resource type="Texture2D" uid="uid://c1kwpjyuod64f" path="res://images/fires/fire-blue.png" id="12_elna6"]
+[ext_resource type="Texture2D" uid="uid://fvua0eio6i3w" path="res://images/teleport/port-blue.png" id="13_kpyxh"]
+[ext_resource type="Texture2D" uid="uid://dl0651xwfa5uv" path="res://images/teleport/teleport-blue.png" id="14_3sof6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c7cj0"]
+texture = ExtResource("1_e0ddd")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_opo6h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3sof6"]
+font = ExtResource("8_1hpc6")
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_u43ft"]
+font = ExtResource("8_1hpc6")
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_6u3jf"]
+font = ExtResource("8_1hpc6")
+font_size = 22
+
+[sub_resource type="FontVariation" id="FontVariation_elna6"]
+base_font = ExtResource("8_1hpc6")
+spacing_glyph = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3sof6"]
+content_margin_top = 4.0
+content_margin_bottom = 12.0
+texture = ExtResource("9_cj67l")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u43ft"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6u3jf"]
+texture = ExtResource("2_3sof6")
+
+[node name="Helpers" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u43ft")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.221
+anchor_top = 0.108
+anchor_right = 0.779
+anchor_bottom = 0.892
+offset_left = 0.0599976
+offset_top = 0.119999
+offset_right = -0.0600281
+offset_bottom = -0.119995
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_c7cj0")
+
+[node name="Help1" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_opo6h")
+
+[node name="Red" type="Sprite2D" parent="Help1"]
+position = Vector2(230, 144)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_opo6h")
+
+[node name="Red4" type="Sprite2D" parent="Help1"]
+position = Vector2(255, 264)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_opo6h")
+
+[node name="Red5" type="Sprite2D" parent="Help1"]
+position = Vector2(386, 264)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_daejo")
+
+[node name="Red3" type="Sprite2D" parent="Help1"]
+position = Vector2(402.785, 153.785)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_favxh")
+hframes = 6
+
+[node name="Red2" type="Sprite2D" parent="Help1"]
+position = Vector2(375.785, 147.785)
+rotation = 0.523599
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_opo6h")
+
+[node name="Label" type="Label" parent="Help1"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 69.0
+offset_right = 302.0
+offset_bottom = 92.0
+text = "1. Click the player"
+label_settings = SubResource("LabelSettings_3sof6")
+
+[node name="Label2" type="Label" parent="Help1"]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 65.0
+offset_right = 460.0
+offset_bottom = 114.0
+text = "2. Move it to the
+desired location"
+label_settings = SubResource("LabelSettings_u43ft")
+
+[node name="Label3" type="Label" parent="Help1"]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 211.0
+offset_right = 391.0
+offset_bottom = 234.0
+text = "3. It will transform into stone"
+label_settings = SubResource("LabelSettings_6u3jf")
+
+[node name="Line" type="Sprite2D" parent="Help1"]
+position = Vector2(321.357, 197)
+rotation = 1.5708
+scale = Vector2(1.5, 20.2947)
+texture = ExtResource("5_1hpc6")
+
+[node name="Line2" type="Sprite2D" parent="Help1"]
+position = Vector2(316, 127)
+scale = Vector2(1.5, 8.1875)
+texture = ExtResource("5_1hpc6")
+
+[node name="Dot" type="Sprite2D" parent="Help1"]
+position = Vector2(315, 196)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_cj67l")
+
+[node name="Arrow-with-line" type="Sprite2D" parent="Help1"]
+position = Vector2(319, 264)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_i8fo3")
+
+[node name="Help2" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_opo6h")
+
+[node name="StoneButton" type="Button" parent="Help2" groups=["ui_stone_button"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.509
+anchor_top = 0.358
+anchor_right = 0.745
+anchor_bottom = 0.461
+offset_left = 0.23999
+offset_top = 0.119995
+offset_right = 0.199951
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontVariation_elna6")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxTexture_3sof6")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_3sof6")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_3sof6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3sof6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3sof6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3sof6")
+text = "Turn To Stone"
+
+[node name="Red" type="Sprite2D" parent="Help2"]
+position = Vector2(230, 144)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_opo6h")
+
+[node name="Red4" type="Sprite2D" parent="Help2"]
+position = Vector2(255, 264)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_opo6h")
+
+[node name="Red5" type="Sprite2D" parent="Help2"]
+position = Vector2(386, 264)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_daejo")
+
+[node name="Label" type="Label" parent="Help2"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 69.0
+offset_right = 302.0
+offset_bottom = 92.0
+text = "1. Click the player"
+label_settings = SubResource("LabelSettings_3sof6")
+
+[node name="Label2" type="Label" parent="Help2"]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 65.0
+offset_right = 460.0
+offset_bottom = 114.0
+text = "2. Click the 'Turn 
+to Stone' button"
+label_settings = SubResource("LabelSettings_3sof6")
+
+[node name="Label3" type="Label" parent="Help2"]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 210.0
+offset_right = 399.0
+offset_bottom = 233.0
+text = "3. It will transform into stone"
+label_settings = SubResource("LabelSettings_3sof6")
+
+[node name="Line" type="Sprite2D" parent="Help2"]
+position = Vector2(321.357, 197)
+rotation = 1.5708
+scale = Vector2(1.5, 20.2947)
+texture = ExtResource("5_1hpc6")
+
+[node name="Line2" type="Sprite2D" parent="Help2"]
+position = Vector2(316, 127)
+scale = Vector2(1.5, 8.1875)
+texture = ExtResource("5_1hpc6")
+
+[node name="Dot" type="Sprite2D" parent="Help2"]
+position = Vector2(315, 196)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_cj67l")
+
+[node name="Arrow-with-line" type="Sprite2D" parent="Help2"]
+position = Vector2(319, 264)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_i8fo3")
+
+[node name="Help3" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_opo6h")
+
+[node name="Red" type="Sprite2D" parent="Help3"]
+position = Vector2(230, 144)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_opo6h")
+
+[node name="Red4" type="Sprite2D" parent="Help3"]
+position = Vector2(255, 264)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_opo6h")
+
+[node name="Red5" type="Sprite2D" parent="Help3"]
+position = Vector2(386, 264)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("11_i8fo3")
+
+[node name="Red3" type="Sprite2D" parent="Help3"]
+position = Vector2(402.785, 153.785)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("12_elna6")
+hframes = 6
+
+[node name="Red2" type="Sprite2D" parent="Help3"]
+position = Vector2(375.785, 147.785)
+rotation = 0.523599
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_opo6h")
+
+[node name="Label" type="Label" parent="Help3"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 69.0
+offset_right = 302.0
+offset_bottom = 92.0
+text = "1. Click the player"
+label_settings = SubResource("LabelSettings_3sof6")
+
+[node name="Label2" type="Label" parent="Help3"]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 65.0
+offset_right = 460.0
+offset_bottom = 114.0
+text = "2. Move it to the
+blue fire"
+label_settings = SubResource("LabelSettings_3sof6")
+
+[node name="Label3" type="Label" parent="Help3"]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 210.0
+offset_right = 438.0
+offset_bottom = 233.0
+text = "3. It will transform into blue player"
+label_settings = SubResource("LabelSettings_3sof6")
+
+[node name="Line" type="Sprite2D" parent="Help3"]
+position = Vector2(321.357, 197)
+rotation = 1.5708
+scale = Vector2(1.5, 20.2947)
+texture = ExtResource("5_1hpc6")
+
+[node name="Line2" type="Sprite2D" parent="Help3"]
+position = Vector2(316, 127)
+scale = Vector2(1.5, 8.1875)
+texture = ExtResource("5_1hpc6")
+
+[node name="Dot" type="Sprite2D" parent="Help3"]
+position = Vector2(315, 196)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_cj67l")
+
+[node name="Arrow-with-line" type="Sprite2D" parent="Help3"]
+position = Vector2(319, 264)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_i8fo3")
+
+[node name="Help4" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_opo6h")
+
+[node name="Red" type="Sprite2D" parent="Help4"]
+position = Vector2(230, 128)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_opo6h")
+
+[node name="Red4" type="Sprite2D" parent="Help4"]
+position = Vector2(400, 150)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("13_kpyxh")
+hframes = 6
+
+[node name="Red5" type="Sprite2D" parent="Help4"]
+position = Vector2(400, 261)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("11_i8fo3")
+
+[node name="Red3" type="Sprite2D" parent="Help4"]
+position = Vector2(234.785, 261.785)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("14_3sof6")
+hframes = 6
+
+[node name="Red2" type="Sprite2D" parent="Help4"]
+position = Vector2(207.785, 259.785)
+rotation = 0.523599
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_opo6h")
+
+[node name="Label" type="Label" parent="Help4"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 69.0
+offset_right = 302.0
+offset_bottom = 92.0
+text = "1. Click the player"
+label_settings = SubResource("LabelSettings_3sof6")
+
+[node name="Label2" type="Label" parent="Help4"]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 176.0
+offset_right = 292.0
+offset_bottom = 225.0
+text = "2. Move it to the
+portal"
+label_settings = SubResource("LabelSettings_3sof6")
+
+[node name="Label3" type="Label" parent="Help4"]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 68.0
+offset_right = 479.0
+offset_bottom = 117.0
+text = "3. It will teleport to
+the portal's exit."
+label_settings = SubResource("LabelSettings_3sof6")
+
+[node name="Line" type="Sprite2D" parent="Help4"]
+position = Vector2(315.357, 180)
+scale = Vector2(1.5, 14.75)
+texture = ExtResource("5_1hpc6")
+
+[node name="Line2" type="Sprite2D" parent="Help4"]
+position = Vector2(233.798, 167)
+rotation = 1.5708
+scale = Vector2(1.5, 9.3911)
+texture = ExtResource("5_1hpc6")
+
+[node name="Dot" type="Sprite2D" parent="Help4"]
+position = Vector2(314, 166)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_cj67l")
+
+[node name="Arrow-with-line" type="Sprite2D" parent="Help4"]
+position = Vector2(400, 206)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_i8fo3")
+
+[node name="back Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -97.9999
+offset_top = 23.0
+offset_right = -81.9999
+offset_bottom = 39.0
+grow_horizontal = 0
+scale = Vector2(2.5, 2.5)
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u43ft")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6u3jf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6u3jf")
+theme_override_styles/normal = SubResource("StyleBoxTexture_6u3jf")
+
+[connection signal="pressed" from="back Button" to="." method="_on_back_button_pressed"]

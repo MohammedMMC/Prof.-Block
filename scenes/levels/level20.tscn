@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dgdi1chdr58g6"]
+[gd_scene load_steps=23 format=3 uid="uid://dgdi1chdr58g6"]
 
 [ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_6g3lg"]
 [ext_resource type="Texture2D" uid="uid://cpafu0aoasaeo" path="res://images/map-tilemap.png" id="2_ajyx4"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://cfbndwix5te3d" path="res://scripts/player_controller.gd" id="15_2re6m"]
 [ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="16_cgvlp"]
 [ext_resource type="PackedScene" uid="uid://bciumb0r1tc20" path="res://scenes/subscenes/ui_controls.tscn" id="17_g4y67"]
+[ext_resource type="PackedScene" uid="uid://b7jece1pqdnoj" path="res://scenes/subscenes/helpers.tscn" id="18_ajyx4"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2re2y"]
 texture = ExtResource("1_6g3lg")
@@ -97,5 +98,11 @@ min_moves = 31
 [node name="UIControls" parent="." instance=ExtResource("17_g4y67")]
 offset_right = 640.0
 offset_bottom = 360.0
+
+[node name="Helpers" parent="." instance=ExtResource("18_ajyx4")]
+visible = false
+offset_right = 640.0
+offset_bottom = 360.0
+help_id = 4
 
 [connection signal="game_won" from="GameManager" to="UIControls" method="display_win"]

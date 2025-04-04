@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://rh7s1psqv7im"]
+[gd_scene load_steps=19 format=3 uid="uid://rh7s1psqv7im"]
 
 [ext_resource type="Texture2D" uid="uid://dnsgqruxcbaxb" path="res://images/bg1.png" id="1_1npfv"]
 [ext_resource type="Texture2D" uid="uid://cpafu0aoasaeo" path="res://images/map-tilemap.png" id="2_h2ita"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://duub8n618rwdb" path="res://images/portals/portal-blue.png" id="10_mcrnq"]
 [ext_resource type="Script" uid="uid://cfbndwix5te3d" path="res://scripts/player_controller.gd" id="12_fvdjd"]
 [ext_resource type="Script" uid="uid://c4ufusux475l6" path="res://scripts/game_manager.gd" id="13_ofiom"]
+[ext_resource type="PackedScene" uid="uid://b7jece1pqdnoj" path="res://scenes/subscenes/helpers.tscn" id="14_1npfv"]
 [ext_resource type="PackedScene" uid="uid://bciumb0r1tc20" path="res://scenes/subscenes/ui_controls.tscn" id="14_fjltj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2re2y"]
@@ -91,5 +92,11 @@ min_moves = 14
 [node name="UIControls" parent="." instance=ExtResource("14_fjltj")]
 offset_right = 640.0
 offset_bottom = 360.0
+
+[node name="Helpers" parent="." instance=ExtResource("14_1npfv")]
+visible = false
+offset_right = 640.0
+offset_bottom = 360.0
+help_id = 3
 
 [connection signal="game_won" from="GameManager" to="UIControls" method="display_win"]
