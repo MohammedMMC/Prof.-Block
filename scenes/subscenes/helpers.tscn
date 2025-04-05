@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b7jece1pqdnoj"]
+[gd_scene load_steps=29 format=3 uid="uid://b7jece1pqdnoj"]
 
 [ext_resource type="Texture2D" uid="uid://btd0lo3e5cevb" path="res://images/menus/medium-bg.png" id="1_e0ddd"]
 [ext_resource type="Script" uid="uid://bwhl27y482twy" path="res://scripts/helpers.gd" id="1_u43ft"]
@@ -42,10 +42,121 @@ content_margin_top = 4.0
 content_margin_bottom = 12.0
 texture = ExtResource("9_cj67l")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3sof6"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u43ft"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6u3jf"]
 texture = ExtResource("2_3sof6")
+
+[sub_resource type="Animation" id="Animation_3sof6"]
+resource_name = "popup"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/PanelContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.200045, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Help1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.200045, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Help2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.200045, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Help3:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.200045, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Help4:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.200045, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Panel:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Panel2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.200045, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u43ft"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/PanelContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u43ft"]
+_data = {
+&"RESET": SubResource("Animation_u43ft"),
+&"popup": SubResource("Animation_3sof6")
+}
 
 [node name="Helpers" type="Control"]
 layout_mode = 3
@@ -63,6 +174,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.19991, 1.19991)
+pivot_offset = Vector2(320, 180)
 
 [node name="PanelContainer" type="PanelContainer" parent="Panel"]
 layout_mode = 1
@@ -77,6 +190,7 @@ offset_right = -0.0600281
 offset_bottom = -0.119995
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(178.5, 141)
 theme_override_styles/panel = SubResource("StyleBoxTexture_c7cj0")
 
 [node name="Help1" type="Panel" parent="."]
@@ -87,6 +201,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(320, 180)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_opo6h")
 
 [node name="Red" type="Sprite2D" parent="Help1"]
@@ -173,6 +289,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(320, 180)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_opo6h")
 
 [node name="StoneButton" type="Button" parent="Help2" groups=["ui_stone_button"]]
@@ -271,6 +389,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(320, 180)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_opo6h")
 
 [node name="Red" type="Sprite2D" parent="Help3"]
@@ -357,6 +477,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(320, 180)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_opo6h")
 
 [node name="Red" type="Sprite2D" parent="Help4"]
@@ -438,7 +560,18 @@ rotation = 1.5708
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_i8fo3")
 
-[node name="back Button" type="Button" parent="."]
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.666816, 0.666816)
+pivot_offset = Vector2(320, 180)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3sof6")
+
+[node name="back Button" type="Button" parent="Panel2"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -455,4 +588,9 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_6u3jf")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_6u3jf")
 theme_override_styles/normal = SubResource("StyleBoxTexture_6u3jf")
 
-[connection signal="pressed" from="back Button" to="." method="_on_back_button_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u43ft")
+}
+
+[connection signal="pressed" from="Panel2/back Button" to="." method="_on_back_button_pressed"]
