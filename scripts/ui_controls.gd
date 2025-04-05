@@ -1,5 +1,7 @@
 extends Control
 
+@onready var animations_player = $AnimationPlayer
+
 const SETTINGS_FILE = "user://settings.dat"
 var game_data = {}
 
@@ -28,11 +30,13 @@ func load_settings():
 func display_win():
 	$WinMessage.display_win()
 	$HBoxContainer/timer.pause()
+	animations_player.play("popup")
+	await animations_player.animation_finished
 
 func _on_pause_button_pressed():
+	$PauseGame.visible = not get_tree().paused
+	animations_player.play("popup")
+	await animations_player.animation_finished
 	get_tree().set("paused", not get_tree().paused)
-	$PauseGame.visible = get_tree().paused
-	if get_tree().paused:
-		$HBoxContainer/timer.pause()
-	else:
-		$HBoxContainer/timer.resume()
+	if get_tree().paused: $HBoxContainer/timer.pause()
+	else: $HBoxContainer/timer.resume()

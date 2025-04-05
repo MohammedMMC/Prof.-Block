@@ -1,7 +1,11 @@
 extends Control
 
+@onready var animations_player = get_parent().get_node("AnimationPlayer")
+
 func _on_resume_button_pressed() -> void:
 	get_tree().set("paused", false)
+	animations_player.play_backwards("popup")
+	await animations_player.animation_finished
 	visible = false
 	get_parent().get_node("HBoxContainer/timer").resume()
 

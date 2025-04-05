@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bciumb0r1tc20"]
+[gd_scene load_steps=35 format=3 uid="uid://bciumb0r1tc20"]
 
 [ext_resource type="Script" uid="uid://bodxx04w4ld37" path="res://scripts/ui_controls.gd" id="1_2edjh"]
 [ext_resource type="Script" uid="uid://bwm2ij4v5y2cl" path="res://scripts/moves_counter.gd" id="1_wqm4y"]
@@ -75,6 +75,39 @@ texture = ExtResource("14_tqo2n")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t8e4t"]
 texture = ExtResource("13_p4nts")
+
+[sub_resource type="Animation" id="Animation_n44r4"]
+resource_name = "popup"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WinMessage:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.200045, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PauseGame:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.200045, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p4nts"]
+_data = {
+&"popup": SubResource("Animation_n44r4")
+}
 
 [node name="UIControls" type="Control"]
 layout_mode = 3
@@ -195,9 +228,18 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_t8e4t")
 [node name="WinMessage" parent="." instance=ExtResource("7_abefu")]
 visible = false
 layout_mode = 1
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(320, 180)
 
 [node name="PauseGame" parent="." instance=ExtResource("10_3r3yg")]
 visible = false
 layout_mode = 1
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(320, 180)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_p4nts")
+}
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

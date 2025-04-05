@@ -174,7 +174,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.19991, 1.19991)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(320, 180)
 
 [node name="PanelContainer" type="PanelContainer" parent="Panel"]
@@ -201,7 +201,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.2, 1.2)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(320, 180)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_opo6h")
 
@@ -289,7 +289,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.2, 1.2)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(320, 180)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_opo6h")
 
@@ -389,7 +389,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.2, 1.2)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(320, 180)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_opo6h")
 
@@ -477,7 +477,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.2, 1.2)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(320, 180)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_opo6h")
 
@@ -567,7 +567,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.666816, 0.666816)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(320, 180)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_3sof6")
 
