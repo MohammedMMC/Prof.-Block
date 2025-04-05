@@ -4,7 +4,7 @@ const SETTINGS_FILE = "user://settings.dat"
 var game_data = {}
 
 func _ready():
-	if OS.get_name() in ["Android", "iOS"]:
+	if OS.get_name() not in ["macOS", "Windows"]:
 		game_data = {
 			"fullscreen": true,
 			"touchbuttons": true

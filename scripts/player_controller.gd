@@ -20,10 +20,10 @@ func _ready():
 	var ui_right_button = get_tree().get_first_node_in_group("ui_right_button")
 
 	if ui_stone_button: ui_stone_button.pressed.connect(turn_selected_player_to_stone)
-	if ui_left_button: 
+	if ui_left_button:
 		ui_left_button.button_down.connect(func(): Input.action_press("ui_left"))
 		ui_left_button.button_up.connect(func(): Input.action_release("ui_left"))
-	if ui_right_button: 
+	if ui_right_button:
 		ui_right_button.button_down.connect(func(): Input.action_press("ui_right"))
 		ui_right_button.button_up.connect(func(): Input.action_release("ui_right"))
 
@@ -103,8 +103,8 @@ func deselect_all_players():
 func turn_selected_player_to_stone():
 	if current_player_index >= 0 and current_player_index < players.size():
 		var player = players[current_player_index]
-		if player.player_texture and player.player_texture.resource_path.ends_with("grey.png"):
-			return
+		if player.target_position != null: return
+		if player.player_texture and player.player_texture.resource_path.ends_with("grey.png"): return
 		if player and get_players_at_same_position(player) == 1 and not player.is_in_any_portal() and not player.is_in_portal() and player.has_floor_below():
 			var index_to_remove = current_player_index
 			deselect_all_players()
