@@ -8,7 +8,7 @@ func _ready():
 	touchbuttons_checkbox.button_pressed = GlobalSettings.get_touch_buttons_enabled()
 
 func _on_display_option_button_item_selected(index: int) -> void:
-	if index == 0: 
+	if index == 0:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		GlobalSettings.game_data.fullscreen = false
 	else:
@@ -24,3 +24,10 @@ func _on_back_button_pressed() -> void:
 	TransitionScenes.start()
 	await TransitionScenes.transition_scene_finished
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
+
+
+func _on_language_option_button_item_selected(index: int) -> void:
+	var _lang = "en" if index == 0 else "tr"
+	TranslationServer.set_locale(_lang)
+	GlobalSettings.game_data.language = _lang
+	GlobalSettings.save_data()

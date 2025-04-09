@@ -62,8 +62,9 @@ offset_right = -29.0
 offset_bottom = -95.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_y = 3
+theme_override_colors/font_shadow_color = Color(0.377919, 0.377919, 0.377919, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
 theme_override_fonts/font = ExtResource("3_sugp2")
 theme_override_font_sizes/font_size = 60
 text = "Prof. BLOCK"
@@ -87,9 +88,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_jyhfs")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 60
+theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 60
+theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]

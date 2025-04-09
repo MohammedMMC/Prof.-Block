@@ -7,7 +7,8 @@ func _ready():
 	if OS.get_name() not in ["macOS", "Windows"]:
 		game_data = {
 			"fullscreen": true,
-			"touchbuttons": true
+			"touchbuttons": true,
+			"language": "en",
 		}
 	else:
 		load_data()
@@ -16,6 +17,7 @@ func load_data():
 	var default_settings = {
 		"fullscreen": false,
 		"touchbuttons": false,
+		"language": "en",
 	}
 	
 	if not FileAccess.file_exists(SETTINGS_FILE):
@@ -44,3 +46,8 @@ func get_fullscreen_enabled():
 	if game_data.has("fullscreen"):
 		return game_data.fullscreen
 	return false
+
+func get_language():
+	if game_data.has("language"):
+		return game_data.language
+	return "en"

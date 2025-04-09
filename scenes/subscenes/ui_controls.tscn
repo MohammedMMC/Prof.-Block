@@ -228,13 +228,11 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_t8e4t")
 [node name="WinMessage" parent="." instance=ExtResource("7_abefu")]
 visible = false
 layout_mode = 1
-scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(320, 180)
 
 [node name="PauseGame" parent="." instance=ExtResource("10_3r3yg")]
 visible = false
 layout_mode = 1
-scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(320, 180)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

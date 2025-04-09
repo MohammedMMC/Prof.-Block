@@ -194,7 +194,6 @@ pivot_offset = Vector2(178.5, 141)
 theme_override_styles/panel = SubResource("StyleBoxTexture_c7cj0")
 
 [node name="Help1" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -409,8 +408,8 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("11_i8fo3")
 
 [node name="Red3" type="Sprite2D" parent="Help3"]
-position = Vector2(402.785, 153.785)
-scale = Vector2(1.5, 1.5)
+position = Vector2(408, 130)
+scale = Vector2(2.4, 2.4)
 texture = ExtResource("12_elna6")
 hframes = 6
 

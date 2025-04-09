@@ -5,11 +5,11 @@ static var best_moves = {}
 
 func _ready():
 	moves = 0
-	text = "Moves: 0"
+	text = tr("Moves") + ": 0"
 
 func increment():
 	moves += 1
-	text = "Moves: " + str(moves)
+	text = tr("Moves") + ": " + str(moves)
 
 func get_moves():
 	return moves

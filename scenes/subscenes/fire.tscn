@@ -48,6 +48,8 @@ script = ExtResource("1_wlh52")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+scale = Vector2(1.7, 1.5)
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
