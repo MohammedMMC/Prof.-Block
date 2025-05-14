@@ -101,7 +101,7 @@ script = ExtResource("10_tel66")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("11_0pgk8")
-min_moves = 4
+min_moves = 41
 
 [node name="UIControls" parent="." instance=ExtResource("12_wh1q3")]
 offset_right = 640.0

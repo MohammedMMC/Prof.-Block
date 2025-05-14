@@ -2,37 +2,42 @@
 Turn To Stone,Turn To Stone,Taşa Dönüş
 Moves,Moves,Hareketler
 You Won!,You Won!,Kazandın!
-Levels,Levels,Sevyeler
+Levels,Levels,Seviyeler
 Next,Next,Sonraki
-Resume,Resume,
+Resume,Resume,Devam Et
 Retry,Retry,Tekrar Dene
 Screen Size,Screen Size,Ekran Hacmi
 Touch Buttons,Touch Buttons,Ekran Tuşları
-Windowed,Windowed,x
-Full Screen,Full Screen,x
+Windowed,Windowed,Pencereli
+Full Screen,Full Screen,Tam Ekran
 Play,Play,Oyna
 Settings,Settings,Ayarlar
 Quit,Quit,Çıkış
-1. Click the player,1. Click the player,x
+1. Click the player,1. Click the player,1. Oyuncuya tıkla
 "2. Move it to the
 desired location","2. Move it to the
-desired location",x
-3. It will transform into stone,3. It will transform into stone,x
-1. Click the player,1. Click the player,x
+desired location","2. İstediğin yere
+taşı"
+3. It will transform into stone,3. It will transform into stone,3. Taşa dönüşecek
+1. Click the player,1. Click the player,1. Oyuncuya tıkla
 "2. Click the 'Turn 
 to Stone' button","2. Click the 'Turn 
-to Stone' button",x
-3. It will transform into stone,3. It will transform into stone,x
+to Stone' button","2. 'Taşa Dönüş'
+düğmesine tıkla"
+3. It will transform into stone,3. It will transform into stone,3. Taşa dönüşecek
 "2. Move it to the
 blue fire","2. Move it to the
-blue fire",x
-3. It will transform into blue player,3. It will transform into blue player,x
+blue fire","2. Mavi ateşe
+taşı"
+3. It will transform into blue player,3. It will transform into blue player,3. Mavi oyuncuya dönüşecek
 "2. Move it to the
 portal","2. Move it to the
-portal",x
+portal","2. Portala
+taşı"
 "3. It will teleport to
 the portal's exit.","3. It will teleport to
-the portal's exit.",x
+the portal's exit.","3. Portalın çıkışına
+ışınlanacak."
 English,English,İnglizce
 Turkish,Turkish,Turkçe
 Language,Language,Dil

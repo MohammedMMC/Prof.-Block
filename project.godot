@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Prof. Block"
-run/main_scene="uid://bdqc6dr1g32ji"
+run/main_scene="uid://de1p6qjk7cxe6"
 config/features=PackedStringArray("4.4", "Mobile")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 config/windows_native_icon="res://icon.ico"
-run/image="uid://blh1jp4en3snj"
-run/minimum_display_time=100
-run/bg_color=Color(0.201851, 0.582931, 0.498309, 1)
 
 [autoload]
 

@@ -8,7 +8,7 @@ func _ready():
 	var music_stream = load("res://audio/bg.wav")
 	
 	music_player.stream = music_stream
-	music_player.volume_db = -2
+	music_player.volume_db = -25
 	music_player.bus = "Music"
 	music_player.autoplay = true
 	music_player.set_stream_paused(false)
@@ -31,4 +31,5 @@ func play_music():
 func play_move_sound():
 	var move_sound = load("res://audio/plop.wav")
 	sfx_player.stream = move_sound
+	sfx_player.volume_db = -30
 	sfx_player.play()
